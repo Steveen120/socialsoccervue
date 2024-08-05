@@ -249,7 +249,7 @@ export default {
 <style scoped>
 /* Estilos de la barra de navegación */
 .navbar {
-  background-color: #007bff;
+  background-color: #ffffff;
   padding: 10px;
 }
 
