@@ -4,7 +4,6 @@ import Register from '../views/Register.vue';
 import Jugador from '../views/jugador.vue';
 import EstadisticasJugador from '@/views/estadisticasJugador.vue'; // Asegúrate de que esta ruta sea correcta
 import Inicio from '../components/Inicio.vue';
-import GestionDeEquipos from '../components/GestionDeEquipos.vue';
 import RegistrosDeResultados from '../components/RegistrosDeResultados.vue';
 import Campeonato from '../views/campeonato.vue';
 import CerrarSesion from '../components/CerrarSesion.vue';
@@ -16,10 +15,11 @@ import EstadisticasPartidos from '../components/EstadisticasPartidos.vue';
 import PlayerList from '../components/PlayerList.vue';
 import ProfileList from '../components/ProfileList.vue';
 import Perfil from '../components/Perfil.vue';
-import Equipo from '@/components/Equipo.vue';
+import Equipo from '@/views/equipo.vue';
 import detalleCampeonato from '../views/detalleCampeonato.vue';
 import Editarencuentros from '@/components/Editarencuentros.vue';
 import Arbitro from '@/views/arbitro.vue';
+import DetalleEquipo from '@/views/detalle-equipo.vue';
 
 const routes = [
   {
@@ -63,10 +63,10 @@ const routes = [
     meta: { requiresAuth: true } // Esta ruta requiere autenticación
   },
   {
-    path: '/equipos',
-    name: 'equipos',
-    component: GestionDeEquipos,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
+    path: '/detalle-equipo/',
+    name: 'DetalleEquipo',
+    component: DetalleEquipo,
+    props: true// Esta ruta requiere autenticación
   },
   {
     path: '/resultados',
@@ -80,14 +80,14 @@ const routes = [
     component: Campeonato,
     meta: { requiresAuth: true } // Esta ruta requiere autenticación
   },
-  
+
   {
-    path: '/detalle-campeonato',
-    name: 'detalle-campeonato',
+    path: '/detalleCampeonato',
+    name: 'detalleCampeonato',
     component: detalleCampeonato,
     meta: { requiresAuth: true } // Esta ruta requiere autenticación
   },
-
+  
   {
     path: '/cerrar-sesion',
     name: 'cerrar-sesion',
