@@ -24,6 +24,10 @@ import DetalleEquipo from '@/views/detalle-equipo.vue';
 const routes = [
   {
     path: '/',
+    redirect: '/login' // Redirigir automáticamente a la ruta /login cuando se carga la aplicación
+  },
+  {
+    path: '/login',
     name: 'login',
     component: Login
   },
