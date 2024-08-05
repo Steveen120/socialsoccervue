@@ -11,15 +11,16 @@ import CrearEquipo from '../components/CrearEquipo.vue';
 import Encuentros from '../components/Encuentros.vue';
 import Encuentrosform from '../components/Encuentrosform.vue';
 import EstadisticasEquipo from '../components/EstadisticasEquipo.vue';
-import EstadisticasPartidos from '../components/EstadisticasPartidos.vue';
+import EstadisticasPartidos from '../views/estadisticasPartidos.vue';
 import PlayerList from '../components/PlayerList.vue';
 import ProfileList from '../components/ProfileList.vue';
-import Perfil from '../components/Perfil.vue';
+import Perfil from '../views/Perfil.vue';
 import Equipo from '@/views/equipo.vue';
 import detalleCampeonato from '../views/detalleCampeonato.vue';
 import Editarencuentros from '@/components/Editarencuentros.vue';
 import Arbitro from '@/views/arbitro.vue';
 import DetalleEquipo from '@/views/detalle-equipo.vue';
+import Partidos from '../views/partido.vue';
 
 const routes = [
   {
@@ -91,7 +92,7 @@ const routes = [
     component: detalleCampeonato,
     meta: { requiresAuth: true } // Esta ruta requiere autenticación
   },
-  
+
   {
     path: '/cerrar-sesion',
     name: 'cerrar-sesion',
@@ -126,6 +127,12 @@ const routes = [
     path: '/estadisticas-partidos',
     name: 'estadisticas-partidos',
     component: EstadisticasPartidos,
+    meta: { requiresAuth: true } // Esta ruta requiere autenticación
+  },
+  {
+    path: '/partidos',
+    name: 'partidos',
+    component: Partidos,
     meta: { requiresAuth: true } // Esta ruta requiere autenticación
   },
   {

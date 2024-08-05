@@ -91,7 +91,8 @@ export default {
       editMode: false,
       editId: null,
       loading: false,
-      error: null
+      error: null,
+      csrfToken: ''
     };
   },
   methods: {
@@ -111,9 +112,17 @@ export default {
       this.loading = true;
       try {
         if (this.editMode) {
-          await axios.put(`http://localhost:9000/estadisticas-jugador/${this.editId}`, this.form);
+          await axios.put(`http://localhost:9000/estadisticas-jugador/${this.editId}`, this.form, {
+            headers: {
+              'X-CSRF-Token': this.csrfToken
+            }
+          });
         } else {
-          await axios.post('http://localhost:9000/estadisticas-jugador', this.form);
+          await axios.post('http://localhost:9000/estadisticas-jugador', this.form, {
+            headers: {
+              'X-CSRF-Token': this.csrfToken
+            }
+          });
         }
         this.fetchEstadisticas();
         this.resetForm();
@@ -133,7 +142,11 @@ export default {
     async deleteEstadistica(id) {
       this.loading = true;
       try {
-        await axios.delete(`http://localhost:9000/estadisticas-jugador/${id}`);
+        await axios.delete(`http://localhost:9000/estadisticas-jugador/${id}`, {
+          headers: {
+            'X-CSRF-Token': this.csrfToken
+          }
+        });
         this.fetchEstadisticas();
       } catch (error) {
         console.error('Error al eliminar la estadística:', error);
@@ -163,7 +176,15 @@ export default {
       this.error = null;
     }
   },
-  mounted() {
+  async mounted() {
+    try {
+      const response = await axios.get('http://localhost:9000/get-csrf-token');
+      this.csrfToken = response.data.csrfToken;
+      axios.defaults.headers['X-CSRF-Token'] = this.csrfToken;
+    } catch (error) {
+      console.error('Error al obtener el token CSRF:', error);
+    }
+    
     this.fetchEstadisticas();
   }
 }
