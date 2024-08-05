@@ -1,4 +1,5 @@
 <template>
+  
     <div>
       <div class="datos-container">
         <h2 class="titulo">Campeonato</h2>
@@ -14,7 +15,7 @@
             <p v-else>Sin foto del presidente</p>
             <p><strong>Información:</strong> {{ campeonato.informacion_liga }}</p>
             <button @click="editarCampeonato(index)" class="btn">Editar</button>
-            <button @click="eliminarCampeonato(index)" class="btn">Eliminar</button>
+            <button @click="eliminarCampeonato(index, campeonato.id)" class="btn">Eliminar</button>
           </div>
         </div>
         <p v-else>No hay campeonatos agregados.</p>
@@ -55,7 +56,7 @@
   
   <script>
   import instance from '@/pluggins/axios';
-
+  
   export default {
     data() {
       return {
@@ -66,19 +67,18 @@
           foto_presidente: '',
           informacion_liga: ''
         },
-        campeonatos: [], // Array para almacenar los campeonatos agregados
+        campeonatos: [],
         csrfToken: '',
-        isCampeonatoAgregado: false // Estado para controlar la visibilidad del botón
+        isCampeonatoAgregado: false,
+        editIndex: null
       };
     },
     async mounted() {
       try {
-        // Obtener token CSRF si es necesario
         const response = await instance.get('/');
         this.csrfToken = response.data.csrfToken;
         instance.defaults.headers['X-CSRF-Token'] = this.csrfToken;
-
-        // Cargar campeonatos al cargar la página
+  
         this.fetchCampeonatos();
       } catch (error) {
         console.error('Error al obtener el token CSRF o campeonatos:', error);
@@ -87,41 +87,57 @@
     methods: {
       async fetchCampeonatos() {
         try {
-          const response = await instance.get('/campeonatos'); // Cambia la ruta a la de tu API
-          this.campeonatos = response.data; // Asigna los datos obtenidos al array campeonatos
+          const response = await instance.get('/campeonatos');
+          this.campeonatos = response.data;
         } catch (error) {
           console.error('Error al obtener los campeonatos:', error);
         }
       },
       async submitForm() {
         try {
-          const response = await instance.post('/campeonato', this.campeonato);
-          console.log('Campeonato agregado:', response.data);
-          this.campeonatos.push({...this.campeonato}); // Agregar el nuevo campeonato al array
+          if (this.editIndex !== null) {
+            const campeonato = this.campeonatos[this.editIndex];
+            const response = await instance.put(`/campeonatos/${campeonato.id}`, this.campeonato);
+            console.log('Campeonato actualizado:', response.data);
+            this.campeonatos.splice(this.editIndex, 1, response.data);
+          } else {
+            const response = await instance.post('/campeonato', this.campeonato);
+            console.log('Campeonato agregado:', response.data);
+            this.campeonatos.push(response.data.campeonato);
+            this.isCampeonatoAgregado = true;
+          }
           this.showModal = false;
-          this.isCampeonatoAgregado = true; // Ocultar el botón "Agregar Campeonato"
-          this.campeonato = {
-            nombre_liga: '',
-            nombre_presidente: '',
-            foto_presidente: '',
-            informacion_liga: ''
-          };
+          this.editIndex = null;
+          this.resetForm();
         } catch (error) {
-          console.error('Error al agregar campeonato:', error);
+          console.error('Error al agregar o actualizar campeonato:', error);
         }
       },
       editarCampeonato(index) {
-        // Lógica para editar el campeonato
-        console.log('Editar campeonato en el índice:', index);
+        this.campeonato = { ...this.campeonatos[index] };
+        this.editIndex = index;
+        this.showModal = true;
       },
-      eliminarCampeonato(index) {
-        this.campeonatos.splice(index, 1); // Eliminar el campeonato del array
-        console.log('Campeonato eliminado en el índice:', index);
+      async eliminarCampeonato(index, id) {
+        try {
+          await instance.delete(`/campeonatos/${id}`);
+          this.campeonatos.splice(index, 1);
+          console.log('Campeonato eliminado en el índice:', index);
+        } catch (error) {
+          console.error('Error al eliminar campeonato:', error);
+        }
+      },
+      resetForm() {
+        this.campeonato = {
+          nombre_liga: '',
+          nombre_presidente: '',
+          foto_presidente: '',
+          informacion_liga: ''
+        };
       }
     }
   };
-</script>
-
+  </script>
 
   
   <style scoped>
@@ -197,9 +213,15 @@
     border: 1px solid black;
     border-radius: 8px;
   }
-  
+  .campeonato-item p {
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+  word-break: break-all; /* Rompe las palabras largas */
+  white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+}
+
   textarea {
     resize: vertical;
+    word-wrap: break-word;
   }
   
   .error {
