@@ -14,7 +14,7 @@ import EstadisticasEquipo from '../components/EstadisticasEquipo.vue';
 import EstadisticasPartidos from '../views/estadisticasPartidos.vue';
 import PlayerList from '../components/PlayerList.vue';
 import ProfileList from '../components/ProfileList.vue';
-import Perfil from '../components/Perfil.vue';
+import Perfil from '../views/Perfil.vue';
 import Equipo from '@/views/equipo.vue';
 import detalleCampeonato from '../views/detalleCampeonato.vue';
 import Editarencuentros from '@/components/Editarencuentros.vue';
