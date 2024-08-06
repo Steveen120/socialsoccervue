@@ -1,4 +1,5 @@
 <template>
+  
     <div>
       <div class="datos-container">
         <h2 class="titulo">Detalle del Campeonato</h2>
@@ -12,7 +13,7 @@
             <h3>Reglamentos:</h3>
             <p>{{ detalle.reglamentos }}</p>
             <button @click="editarDetalle(index)" class="btn">Editar</button>
-            <button @click="eliminarDetalle(index)" class="btn">Eliminar</button>
+            <button @click="eliminarDetalleCampeonato(index, detalle.id)" class="btn">Eliminar</button>
           </div>
         </div>
         <p v-else>No hay detalles del campeonato agregados.</p>
@@ -108,12 +109,29 @@
   editarDetalle(index) {
     this.detalle = {...this.detallesCampeonatos[index]};
     this.showModal = true;
-  }
+  },
+  async eliminarDetalleCampeonato(index, id) {
+        try {
+          await instance.delete(`/detalle-campeonatos/${id}`);
+          this.detallesCampeonatos.splice(index, 1);
+          console.log('Campeonato eliminado en el índice:', index);
+        } catch (error) {
+          console.error('Error al eliminar campeonato:', error);
+        }
+      },
+
+      resetForm() {
+        this.detalle  = {
+          reglamentos: '',
+          id_campeonato: null
+        };
+        
+      }
 } };
    </script>
    <style scoped>
    .datos-container {
-     border: 1px solid #232629;
+     border: 1px solid #0d0e0f;
      border-radius: 20px;
      margin: 0 auto;
      max-width: 600px;
@@ -156,6 +174,12 @@
      max-width: 90%;
    }
    
+   .detalle-item p {
+  word-wrap: break-word; /* Permite que las palabras largas se rompan */
+  word-break: break-all; /* Rompe las palabras largas */
+  white-space: normal; /* Permite que el texto se ajuste a múltiples líneas */
+}
+
    .form-container {
      max-width: 100%;
      margin: 0;

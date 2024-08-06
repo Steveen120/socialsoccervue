@@ -18,7 +18,7 @@
                 </a>
                 <ul v-show="isSubmenuOpen(item.section)">
                   <li v-for="subItem in item.submenu" :key="subItem.section">
-                    <a href="#" @click.prevent="navigateTo(subItem.section)">
+                    <a href="#" @click.prevent="handleMenuItemClick(subItem)">
                       <span>{{ subItem.name }}</span>
                     </a>
                   </li>
@@ -43,6 +43,7 @@
     </template>
   </div>
 </template>
+
 <script setup>
 import { ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
@@ -57,27 +58,25 @@ const isRegisterView = ref(false);
 
 watch(() => route.name, (newRoute) => {
   isLoginView.value = newRoute === 'login';
-  isRegisterView.value = newRoute === 'register'; // Añadimos esta línea
+  isRegisterView.value = newRoute === 'register';
 });
 
-let menuItems = [
-  { name: 'Inicio', icon: 'fa-home', section: 'home' },
+const menuItems = [
+  { name: 'Inicio', icon: 'fa-home', section: 'inicio' },
   { name: 'Perfil', icon: 'fa-user', section: 'perfil' },
-  { name: 'Encuentros', icon: 'fa-futbol', section: 'encuentros' },
+  { name: 'Encuentros', icon: 'fa-futbol', section: 'partido' },
   { name: 'Gestión', icon: 'fa-cogs', section: 'gestion', submenu: [
-      { name: 'Gestión de Equipos', section: 'equipos' },
-      { name: 'Gestión de Jugadores', section: 'estadisticas-jugador' },
-      // Eliminamos 'Gestión de Perfiles'
+      { name: 'Gestión de Equipos', section: 'equipo' },
+      { name: 'Gestión de Jugadores', section: 'jugador' }
     ]
   },
   { name: 'Estadísticas', icon: 'fa-chart-bar', section: 'estadisticas', submenu: [
-      { name: 'Estadísticas de Equipos', section: 'estadisticas-equipo' },
+      { name: 'Estadísticas de Jugadores', section: 'estadisticas-jugador' },
       { name: 'Estadísticas de Partidos', section: 'estadisticas-partidos' }
     ]
   },
-  { name: 'Registro de Resultados', icon: 'fa-clipboard-list', section: 'resultados' },
   { name: 'Campeonato', icon: 'fa-trophy', section: 'campeonato' },
-  { name: 'Albitro', icon: 'fa-whistle', section: 'albitro' },
+  { name: 'Árbitro', icon: 'fa-whistle', section: 'arbitro' },
   { name: 'Cerrar Sesión', icon: 'fa-sign-out-alt', section: 'cerrar-sesion' }
 ];
 
@@ -113,6 +112,12 @@ const isActive = (section) => {
 const handleMenuItemClick = (item) => {
   if (item.section === 'cerrar-sesion') {
     handleLogout();
+  } else if (item.section === 'partido') {
+    window.location.href = 'http://localhost:5173/partidos';
+  } else if (item.section === 'inicio') {
+    window.location.href = 'http://localhost:5173/Inicio';
+  } else if (item.section === 'estadisticas-jugador') {
+    window.location.href = 'http://localhost:5173/estadisticas-Jugador';
   } else {
     navigateTo(item.section);
   }
@@ -121,15 +126,11 @@ const handleMenuItemClick = (item) => {
 const handleLogout = () => {
   localStorage.removeItem('loggedIn');
   closeMenu();
-  menuItems = menuItems.filter(item => item.section !== 'login');
   router.push({ name: 'login' });
 };
 
-// Filtrar el menú para excluir el ítem "Iniciar Sesión" si no está autenticado
-/* const filteredMenuItems = ref(menuItems.filter(item => item.section !== 'login')); */
-
+const filteredMenuItems = ref(menuItems.filter(item => item.section !== 'login'));
 </script>
-
 
 <style scoped>
 #app {
