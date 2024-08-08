@@ -157,7 +157,7 @@
     methods: {
       async fetchEquipos() {
         try {
-          const response = await instance.get("/equipo");
+          const response = await instance.get("/equipos");
           this.equipos = response.data;
         } catch (error) {
           console.error("Error al obtener equipos:", error);
@@ -179,12 +179,12 @@
       async submitForm() {
         try {
           if (this.modalEquipo.id === null) {
-            await instance.post("/equipo", this.modalEquipo);
+            await instance.post("/equipos", this.modalEquipo);
             this.alertMessage = "Equipo agregado exitosamente.";
             this.alertType = "success";
           } else {
             await instance.put(
-              `/equipo/${this.modalEquipo.id}`,
+              `/equipos/${this.modalEquipo.id}`,
               this.modalEquipo
             );
             this.alertMessage = "Equipo actualizado exitosamente.";
@@ -211,7 +211,7 @@
       },
       async deleteEquipo(id) {
         try {
-          await instance.delete(`/equipo/${id}`);
+          await instance.delete(`/equipos/${id}`);
           this.equipos = this.equipos.filter((equipo) => equipo.id !== id);
           this.alertMessage = "Equipo eliminado exitosamente.";
           this.alertType = "success";

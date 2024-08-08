@@ -54,8 +54,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-
+import instance from '@/pluggins/axios';
 export default {
   data() {
     return {
@@ -99,7 +98,7 @@ export default {
     async fetchEstadisticas() {
       this.loading = true;
       try {
-        const response = await axios.get('http://localhost:9000/estadisticas-jugador');
+        const response = await instance.get('/estadisticas-jugador');
         this.estadisticas = response.data;
       } catch (error) {
         console.error('Error al obtener las estadísticas:', error);
@@ -108,23 +107,16 @@ export default {
         this.loading = false;
       }
     },
+
     async submitForm() {
       this.loading = true;
       try {
         if (this.editMode) {
-          await axios.put(`http://localhost:9000/estadisticas-jugador/${this.editId}`, this.form, {
-            headers: {
-              'X-CSRF-Token': this.csrfToken
-            }
-          });
+          await instance.put(`/estadisticas-jugador/${this.editId}`, this.form);
         } else {
-          await axios.post('http://localhost:9000/estadisticas-jugador', this.form, {
-            headers: {
-              'X-CSRF-Token': this.csrfToken
-            }
-          });
+          await instance.post('/estadisticas-jugador', this.form);
         }
-        this.fetchEstadisticas();
+        await this.fetchEstadisticas();
         this.resetForm();
       } catch (error) {
         console.error('Error al enviar el formulario:', error);
@@ -142,12 +134,8 @@ export default {
     async deleteEstadistica(id) {
       this.loading = true;
       try {
-        await axios.delete(`http://localhost:9000/estadisticas-jugador/${id}`, {
-          headers: {
-            'X-CSRF-Token': this.csrfToken
-          }
-        });
-        this.fetchEstadisticas();
+        await instance.delete(`/estadisticas-jugador/${id}`);
+        await this.fetchEstadisticas();
       } catch (error) {
         console.error('Error al eliminar la estadística:', error);
         this.error = 'Error al eliminar la estadística';
@@ -178,17 +166,18 @@ export default {
   },
   async mounted() {
     try {
-      const response = await axios.get('http://localhost:9000/get-csrf-token');
+      const response = await instance.get('/');
       this.csrfToken = response.data.csrfToken;
-      axios.defaults.headers['X-CSRF-Token'] = this.csrfToken;
+      instance.defaults.headers['X-CSRF-Token'] = this.csrfToken;
     } catch (error) {
       console.error('Error al obtener el token CSRF:', error);
     }
     
-    this.fetchEstadisticas();
+    await this.fetchEstadisticas();
   }
 }
 </script>
+
 
 <style>
 .estadisticas-jugadores {
