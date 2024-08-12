@@ -2,7 +2,12 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="search-container">
-        <input type="text" v-model="searchQuery" placeholder="Buscar..." @keyup.enter="performSearch" />
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Buscar..."
+          @keyup.enter="performSearch"
+        />
         <button @click="performSearch">
           <i class="fas fa-search"></i>
         </button>
@@ -32,7 +37,13 @@
             <td>{{ jugador.nombre_jugador }}</td>
             <td>{{ jugador.edad }}</td>
             <td>{{ jugador.fecha_nacimiento }}</td>
-            <td><img :src="jugador.foto_jugador" alt="Foto del Jugador" class="jugador-foto" /></td>
+            <td>
+              <img
+                :src="jugador.foto_jugador"
+                alt="Foto del Jugador"
+                class="jugador-foto"
+              />
+            </td>
             <td>{{ jugador.numerocamiseta }}</td>
             <td>{{ getEquipoNombre(jugador.id_equipos) }}</td>
             <td>
@@ -69,14 +80,19 @@
           <select v-model="modalJugador.id_equipos" class="input-field">
             <option value="" disabled>Seleccionar equipo</option>
             <option v-for="equipo in equipos" :key="equipo.id" :value="equipo.id">
-              {{ equipo.nombre }}
+              {{ equipo.nombre_de_equipo }}
             </option>
           </select>
         </div>
         <div class="form-group">
           <label>Foto del Jugador</label>
           <input type="file" @change="handleFileUpload" class="input-field" />
-          <img v-if="modalJugador.foto_jugador" :src="modalJugador.foto_jugador" alt="Foto del Jugador" class="jugador-foto" />
+          <img
+            v-if="modalJugador.foto_jugador"
+            :src="modalJugador.foto_jugador"
+            alt="Foto del Jugador"
+            class="modal-jugador-foto"
+          />
         </div>
         <div class="form-actions">
           <button class="btn save" @click="saveJugador">Guardar</button>
@@ -95,7 +111,7 @@ export default {
   data() {
     return {
       jugadores: [],
-      equipos: [],  // Agrega esta línea para almacenar los equipos
+      equipos: [],
       showModal: false,
       modalTitle: '',
       modalJugador: {
@@ -105,14 +121,14 @@ export default {
         fecha_nacimiento: '',
         foto_jugador: '',
         numerocamiseta: '',
-        id_equipos: null
+        id_equipos: null,
       },
-      searchQuery: ''
+      searchQuery: '',
     };
   },
   async mounted() {
     await this.fetchJugador();
-    await this.fetchEquipos();  // Agrega esta línea para obtener la lista de equipos
+    await this.fetchEquipos();
   },
   computed: {
     filteredJugadores() {
@@ -120,9 +136,11 @@ export default {
         return this.jugadores;
       }
       return this.jugadores.filter(jugador =>
-        jugador.nombre_jugador.toLowerCase().includes(this.searchQuery.toLowerCase())
+        jugador.nombre_jugador
+          .toLowerCase()
+          .includes(this.searchQuery.toLowerCase())
       );
-    }
+    },
   },
   methods: {
     async fetchJugador() {
@@ -143,11 +161,19 @@ export default {
     },
     getEquipoNombre(id) {
       const equipo = this.equipos.find(equipo => equipo.id === id);
-      return equipo ? equipo.nombre : 'Sin equipo';
+      return equipo ? equipo.nombre_de_equipo : 'Sin equipo';
     },
     openAddModal() {
       this.modalTitle = 'Agregar Jugador';
-      this.modalJugador = { id: null, nombre_jugador: '', edad: '', fecha_nacimiento: '', foto_jugador: '', numerocamiseta: '', id_equipos: null };
+      this.modalJugador = {
+        id: null,
+        nombre_jugador: '',
+        edad: '',
+        fecha_nacimiento: '',
+        foto_jugador: '',
+        numerocamiseta: '',
+        id_equipos: null,
+      };
       this.showModal = true;
     },
     editJugador(jugador) {
@@ -196,13 +222,13 @@ export default {
     },
     performSearch() {
       // No es necesario; la búsqueda se maneja automáticamente por la propiedad computada
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* Navbar styles */
+/* Estilos de la barra de navegación */
 .navbar {
   width: 100%;
   background-color: #fff;
@@ -246,7 +272,7 @@ export default {
   color: #555;
 }
 
-/* Table styles */
+/* Estilos de la tabla de jugadores */
 .jugadores-table-container {
   display: flex;
   justify-content: center;
@@ -256,42 +282,79 @@ export default {
 }
 
 .jugadores-table {
-  width: 100%;
-  max-width: 1200px;
-  overflow-x: auto;
-  background: #f9f9f9;
+  width: 80%;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .jugadores-table h2 {
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
 }
 
 .jugadores-table table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
-.jugadores-table th, .jugadores-table td {
-  padding: 8px;
+.jugadores-table th,
+.jugadores-table td {
+  padding: 10px;
   text-align: left;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .jugadores-table th {
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
 }
 
-.jugadores-table tbody tr:hover {
-  background-color: #f0f0f0;
+.jugadores-table td {
+  vertical-align: middle;
 }
 
-/* Modal styles */
+.jugadores-table img.jugador-foto {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Botones */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn.add {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn.edit {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn.save {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn.cancel {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -307,25 +370,17 @@ export default {
 .modal-content {
   background: #fff;
   padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 80%;
 }
 
 .modal-content h2 {
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
 }
 
 .form-group {
-  margin-bottom: 12px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
+  margin-bottom: 15px;
 }
 
 .input-field {
@@ -333,53 +388,23 @@ export default {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  outline: none;
 }
 
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.input-field:focus {
+  border-color: #007bff;
 }
 
-.btn.save {
-  background-color: #28a745;
-  color: #fff;
+.modal-jugador-foto {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-.btn.cancel {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.btn.add {
-  background-color: #007bff;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.btn.edit {
-  background-color: #ffc107;
-  color: #fff;
-}
-
-.btn.delete {
-  background-color: #dc3545;
-  color: #fff;
-  margin-left: 5px;
-}
-
-.modal-content .form-actions {
+.form-actions {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-.jugador-foto {
-  max-width: 100px;
-  max-height: 100px;
-  display: block;
-  margin: 10px 0;
+  justify-content: space-between;
 }
 </style>
