@@ -2,7 +2,12 @@
   <nav class="navbar">
     <div class="navbar-content">
       <div class="search-container">
-        <input type="text" v-model="searchQuery" placeholder="Buscar..." @keyup.enter="performSearch" />
+        <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Buscar..."
+          @keyup.enter="performSearch"
+        />
         <button @click="performSearch">
           <i class="fas fa-search"></i>
         </button>
@@ -84,7 +89,7 @@
           <img v-if="modalPerfil.imagen" :src="modalPerfil.imagen" alt="Imagen del Perfil" class="perfil-imagen">
         </div>
         <div class="form-actions">
-          <button class="btn edit" v-if="modalPerfil.id !== null" @click="savePerfil">Guardar</button>
+          <button class="btn save" v-if="modalPerfil.id !== null" @click="savePerfil">Guardar</button>
           <button class="btn add" v-if="modalPerfil.id === null" @click="savePerfil">Agregar</button>
           <button class="btn cancel" @click="closeModal">Cancelar</button>
         </div>
@@ -144,10 +149,8 @@ export default {
       if (this.searchQuery.trim() === '') {
         return this.perfils;
       }
-      return this.perfils.filter(perfil => 
-        perfil.nombre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        perfil.apellido.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        perfil.correo.toLowerCase().includes(this.searchQuery.toLowerCase())
+      return this.perfils.filter(perfil =>
+        perfil.nombre.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     }
   },
@@ -155,23 +158,29 @@ export default {
     async fetchPerfil() {
       try {
         const response = await instance.get('/perfils');
-        if (Array.isArray(response.data)) {
-          this.perfils = response.data;
-        } else {
-          console.error('La respuesta no es un array:', response.data);
-          this.perfils = []; // Asigna un array vacío en caso de error
-        }
+        this.perfils = response.data;
       } catch (error) {
         console.error('Error al obtener perfiles:', error);
       }
     },
-    
     openAddModal() {
       this.modalTitle = 'Agregar Perfil';
-      this.modalPerfil = { id: null, nombre: '', apellido: '', correo: '', rol: '', numero: 0, imagen: '' };
+      this.modalPerfil = {
+        id: null,
+        nombre: '',
+        apellido: '',
+        correo: '',
+        rol: '',
+        numero: 0,
+        imagen: ''
+      };
       this.showModal = true;
     },
-    
+    editPerfil(perfil) {
+      this.modalTitle = 'Editar Perfil';
+      this.modalPerfil = { ...perfil };
+      this.showModal = true;
+    },
     async savePerfil() {
       try {
         if (this.modalPerfil.id === null) {
@@ -185,18 +194,6 @@ export default {
         console.error('Error al guardar el perfil:', error);
       }
     },
-    
-    editPerfil(perfil) {
-      this.modalTitle = 'Editar Perfil';
-      this.modalPerfil = { ...perfil };
-      this.showModal = true;
-    },
-    
-    confirmDelete(id) {
-      this.confirmDeleteId = id;
-      this.showConfirmDeleteModal = true;
-    },
-
     async deletePerfil(id) {
       try {
         await instance.delete(`/perfils/${id}`);
@@ -206,7 +203,16 @@ export default {
         console.error('Error al eliminar el perfil:', error);
       }
     },
-    
+    confirmDelete(id) {
+      this.confirmDeleteId = id;
+      this.showConfirmDeleteModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+    closeConfirmDeleteModal() {
+      this.showConfirmDeleteModal = false;
+    },
     handleFileUpload(event) {
       const file = event.target.files[0];
       if (file) {
@@ -216,31 +222,6 @@ export default {
         };
         reader.readAsDataURL(file);
       }
-    },
-    
-    closeModal() {
-      this.showModal = false;
-    },
-    
-    closeConfirmDeleteModal() {
-      this.showConfirmDeleteModal = false;
-      this.confirmDeleteId = null;
-    },
-    
-    performSearch() {
-      // Simplemente actualiza la lista de perfiles basada en el texto de búsqueda
-      this.filteredPerfils();
-    },
-    
-    adjustNumber(event) {
-      const value = Number(event.target.value);
-      if (value < 0) {
-        this.modalPerfil.numero = 0;
-      } else if (value > 100) {
-        this.modalPerfil.numero = 100;
-      } else {
-        this.modalPerfil.numero = Math.floor(value);
-      }
     }
   }
 };
@@ -249,7 +230,9 @@ export default {
 <style scoped>
 /* Estilos de la barra de navegación */
 .navbar {
-  background-color: #ffffff;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
 }
 
@@ -262,155 +245,189 @@ export default {
 .search-container {
   display: flex;
   align-items: center;
-  background: #fff;
-  border-radius: 5px;
-  padding: 5px;
 }
 
 .search-container input {
-  border: none;
-  padding: 5px;
-  border-radius: 5px;
-  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
 }
 
 .search-container button {
-  background: transparent;
-  border: none;
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-/* Estilos para la tabla de perfiles */
+.search-container button:hover {
+  background-color: #ccc;
+}
+
+.search-container button i {
+  color: #555;
+}
+
+/* Estilos de la tabla de perfiles */
 .perfils-table-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  height: 100vh;
   padding: 20px;
 }
 
 .perfils-table {
-  width: 100%;
-  max-width: 1200px;
-  background: #fff;
+  width: 80%;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .perfils-table h2 {
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
 }
 
 .perfils-table table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
-.perfils-table th, .perfils-table td {
-  padding: 8px;
+.perfils-table th,
+.perfils-table td {
+  padding: 10px;
   text-align: left;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .perfils-table th {
+  background-color: #f4f4f4;
+}
+
+.perfils-table .perfil-imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Estilos de los botones */
+.perfils-table .btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.perfils-table .btn.edit {
   background-color: #007bff;
   color: #fff;
 }
 
-.perfils-table tbody tr:hover {
-  background-color: #f0f0f0;
-}
-
-.btn {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn.edit {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.btn.delete {
+.perfils-table .btn.delete {
   background-color: #dc3545;
   color: #fff;
 }
 
-.btn.add {
-  background-color: #007bff;
+.perfils-table .btn.add {
+  background-color: #28a745;
   color: #fff;
+  margin-top: 10px;
 }
 
+.perfils-table .btn:hover {
+  opacity: 0.9;
+}
+
+/* Estilos del modal */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  background: #fff;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 500px;
 }
 
 .modal-content h2 {
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
 }
 
-.form-group {
+.modal-content .form-group {
   margin-bottom: 15px;
 }
 
-.form-group label {
+.modal-content .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #333;
 }
 
-.input-field {
+.modal-content .form-group .input-field {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 4px;
+  outline: none;
 }
 
-.form-actions {
+.modal-content .perfil-imagen {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.modal-content .form-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.form-actions .btn.cancel {
-  background-color: #dc3545;
+.modal-content .form-actions .btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content .form-actions .btn.save {
+  background-color: #007bff;
   color: #fff;
 }
 
-.form-actions .btn.confirm {
+.modal-content .form-actions .btn.add {
   background-color: #28a745;
   color: #fff;
 }
 
-.perfil-imagen {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-top: 10px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+.modal-content .form-actions .btn.cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.modal-content .form-actions .btn.confirm {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.modal-content .form-actions .btn:hover {
+  opacity: 0.9;
 }
 </style>
