@@ -11,6 +11,15 @@
       </div>
     </nav>
 
+    <div v-if="alertVisible" class="alerta">
+      <p>Partido Registrado </p>
+      <div class="checkmark-container">
+        <div class="checkmark">
+          <div class="checkmark-circle"><img src="https://icon-library.com/images/check-icon/check-icon-10.jpg" alt="check"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-one">
       <h1>Partidos Próximos</h1>
       <div class="button-container">
@@ -137,7 +146,8 @@ export default {
         hora: ''
       },
       searchQuery: '',
-      csrfToken: ''
+      csrfToken: '',
+      alertVisible: false
     };
   },
   async mounted() {
@@ -222,14 +232,17 @@ export default {
         const url = this.modalPartido.id ? `/partidos/${this.modalPartido.id}` : '/partidos';
         const method = this.modalPartido.id ? 'put' : 'post';
         const response = await instance[method](url, this.modalPartido);
-        this.fetchPartidos(); // Actualiza la lista de partidos
+        this.fetchPartidos();// Actualiza la lista de partidos
+        this.alertVisible = true; // Muestra la alerta
+      setTimeout(() => {
+        this.alertVisible = false; // Oculta la alerta después de 3 segundos
+      }, 3000); 
         this.closeModal();
       } catch (error) {
         console.error('Error al guardar el partido:', error);
       }
     },
     async confirmDelete(partidoId) {
-      if (confirm('¿Estás seguro de que quieres eliminar este partido?')) {
         try {
           const response = await instance.delete(`/partidos/${partidoId}`);
           console.log('Respuesta del servidor:', response);
@@ -237,7 +250,6 @@ export default {
         } catch (error) {
           console.error('Error al eliminar el partido:', error.response ? error.response.data : error.message);
         }
-      }
     },
     performSearch() {
       // La búsqueda se maneja automáticamente a través de computed 'filteredPartidos'
@@ -260,6 +272,65 @@ export default {
 
 <style scoped>
 /* Estilos generales */
+.alerta {
+  background-color: #232629;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.checkmark-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  margin-left: 15px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.checkmark-circle {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 50%;
+}
+.checkmark-circle img{
+  max-width: 100%;
+}
+
+.checkmark-stem {
+  width: 3px;
+  height: 9px;
+  background-color: white;
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  transform: rotate(-45deg);
+}
+
+.checkmark-kick {
+  width: 3px;
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  transform: rotate(45deg);
+}
+
 .navbar {
   width: 100%;
   background-color: #fff;
@@ -371,10 +442,10 @@ export default {
 }
 
 .date-box {
-  background-color: #f0f0f0;
+  background-color: #dbd5d5cd;
   font-size: 1.2em;
   padding: 2px;
-  border-radius: 5px;
+  border-radius: 20px 20px 0 0;
 }
 
 .hora {
@@ -386,14 +457,12 @@ export default {
 .time,
 .date {
   font-size: 14px;
-  background-color: #001529;
+  background-color: #5f6061;
   text-align: center;
   color: white;
   width: 25%;
-  /* Ajusta el ancho según sea necesario */
-  border-radius: 5px;
+  border-radius: 15px 0 15px 0;
   box-sizing: border-box;
-  /* Asegura que el padding no afecte al ancho total del elemento */
 }
 
 .button-group {
@@ -411,101 +480,119 @@ export default {
 
 /*agregar y editar*/
 
+/* Estilos para el modal */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  width: 40%;
-  text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
 }
 
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close:hover {
+    color: #333;
 }
 
 .form-group {
-  margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .form-group input,
 .form-group select {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-group select {
-  width: 95%;
+    width: calc(100% - 22px);
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
 }
 
 .form-actions {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .form-actions .btn {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+    width: 48%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-actions .btn.save {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.form-actions .btn.cancel {
+    background-color: #d9534f;
+    color: white;
 }
 
 /* Estilos específicos de los botones */
 .btn.add {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
 }
 
 .btn.championships {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
   text-decoration: none;
 }
 
 .btn.edit {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
   padding: 10px 20px;
 }
 
 .btn.delete {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
   padding: 10px 20px;
 }
 
 .btn.save {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
 }
 
 .btn.cancel {
-  background-color: #008CBA;
+  background-color: #00acac;
   color: white;
 }
 

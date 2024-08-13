@@ -11,12 +11,23 @@
             </div>
         </nav>
 
+        <div v-if="alertVisible" class="alerta">
+      <p>Estadistica Registrada <br></p>
+      <div class="checkmark-container">
+        <div class="checkmark">
+          <div class="checkmark-circle"><img src="https://icon-library.com/images/check-icon/check-icon-10.jpg" alt="check"></div>
+        </div>
+      </div>
+    </div>
+
         <div class="container-one">
             <h1>Estadísticas de Partidos</h1>
             <div class="button-container">
                 <button class="btn add" @click="openAddModal">Agregar Estadística</button>
                 <router-link class="btn championships" to="/partidos">Ver Partidos</router-link>
             </div>
+
+            <div class="estadisticas-table-container">
 
             <table class="stats-table">
                 <thead>
@@ -56,11 +67,12 @@
                         <td>
                             <button class="btn edit"
                                 @click="editEstadisticasPartido(estadisticasPartido)">Editar</button>
-                            <button class="btn delete" @click="confirmDelete(estadisticasPartido.id)">Eliminar</button>
+                                <button class="btn delete" @click="eliminarEstadisticaPartido(index, estadisticasPartido.id)">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
         </div>
 
         <!-- Modal -->
@@ -70,6 +82,22 @@
                 <h2>{{ modalTitle }}</h2>
 
                 <form @submit.prevent="saveEstadisticasPartido">
+
+                    <div class="form-group">
+                        <label for="partido_id">Partido:</label>
+                        <select id="partido_id" v-model="modalEstadisticasPartido.partido_id">
+                            <option v-for="partido in partidos" :key="partido.id" :value="partido.id">{{
+                                partido.nombre_partido }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arbitro_id">Árbitro:</label>
+                        <select id="arbitro_id" v-model="modalEstadisticasPartido.arbitro_id">
+                            <option v-for="arbitro in arbitros" :key="arbitro.id" :value="arbitro.id">{{ arbitro.nombre
+                                }}</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="tar_amarrillas">Tarjetas Amarillas:</label>
                         <input id="tar_amarrillas" type="number" v-model="modalEstadisticasPartido.tar_amarrillas"
@@ -132,21 +160,6 @@
                             v-model="modalEstadisticasPartido.calificacion" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="partido_id">Partido:</label>
-                        <select id="partido_id" v-model="modalEstadisticasPartido.partido_id">
-                            <option v-for="partido in partidos" :key="partido.id" :value="partido.id">{{
-                                partido.nombre_partido }}</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="arbitro_id">Árbitro:</label>
-                        <select id="arbitro_id" v-model="modalEstadisticasPartido.arbitro_id">
-                            <option v-for="arbitro in arbitros" :key="arbitro.id" :value="arbitro.id">{{ arbitro.nombre
-                                }}</option>
-                        </select>
-                    </div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn save">Guardar</button>
@@ -187,7 +200,8 @@ export default {
                 arbitro_id: null
             },
             searchQuery: '',
-            csrfToken: ''
+            csrfToken: '',
+            alertVisible: false
         };
     },
     async mounted() {
@@ -272,6 +286,7 @@ export default {
             try {
                 const response = await instance.post('/estadisticas', this.modalEstadisticasPartido);
                 this.estadisticasPartidos.push(response.data);
+                this.showAlert();
             } catch (error) {
                 console.error('Error al agregar la estadística de partido:', error);
             }
@@ -287,19 +302,16 @@ export default {
                 console.error('Error al actualizar la estadística de partido:', error);
             }
         },
-        async confirmDelete(id) {
-            if (confirm('¿Estás seguro de que deseas eliminar esta estadística de partido?')) {
-                await this.deleteEstadisticasPartido(id);
-            }
-        },
-        async deleteEstadisticasPartido(id) {
-            try {
-                await instance.delete(`/estadisticas/${id}`);
-                this.estadisticasPartidos = this.estadisticasPartidos.filter(estadisticasPartido => estadisticasPartido.id !== id);
-            } catch (error) {
-                console.error('Error al eliminar la estadística de partido:', error);
-            }
-        },
+        async eliminarEstadisticaPartido(index, id) {
+    try {
+        await instance.delete(`/estadisticas/${id}`);
+        this.estadisticasPartidos.splice(index, 1);
+        console.log('Estadística de partido eliminada en el índice:', index);
+    } catch (error) {
+        console.error('Error al eliminar estadística de partido:', error);
+    }
+},
+
         closeModal() {
             this.showModal = false;
         },
@@ -320,13 +332,80 @@ export default {
                 partido_id: null,
                 arbitro_id: null
             };
-        }
+        },
+        showAlert() {
+      this.alertVisible = true;
+      setTimeout(() => {
+        this.alertVisible = false;
+      }, 3000); // Oculta la alerta después de 3 segundos
+    }
+
     }
 };
 </script>
 
 
 <style scoped>
+.alerta {
+  background-color: #232629;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.checkmark-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  margin-left: 15px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.checkmark-circle {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 50%;
+}
+.checkmark-circle img{
+  max-width: 100%;
+}
+
+.checkmark-stem {
+  width: 3px;
+  height: 9px;
+  background-color: white;
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  transform: rotate(-45deg);
+}
+
+.checkmark-kick {
+  width: 3px;
+  height: 5px;
+  background-color: white;
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  transform: rotate(45deg);
+}
+
+
 .navbar {
     width: 100%;
     background-color: #fff;
@@ -414,8 +493,17 @@ export default {
     cursor: pointer;
 }
 
+.estadisticas-table-container {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   padding: 20px;
+ }
+
 .stats-table {
-    max-width: 100%;
+    width: 100%;
+   max-width: 1500px;
+   overflow-x: auto;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -429,9 +517,10 @@ export default {
 .stats-table th {
     background-color: #f2eeee;
 }
-
-/*agregar y editar*/
-
+.stats-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+/* Estilos para el modal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -442,13 +531,17 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
 .modal {
     background-color: white;
-    border-radius: 10px;
+    margin-bottom: 5px;
     padding: 20px;
-    width: 40%;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
     text-align: center;
 }
 
@@ -456,12 +549,17 @@ export default {
     position: absolute;
     top: 10px;
     right: 10px;
-    cursor: pointer;
     font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.close:hover {
+    color: #333;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
@@ -472,62 +570,71 @@ export default {
 
 .form-group input,
 .form-group select {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-group select {
-    width: 95%;
+    width: calc(100% - 22px);
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
 }
 
 .form-actions {
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
 .form-actions .btn {
-    padding: 10px 20px;
+    width: 48%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+}
+
+.form-actions .btn.save {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.form-actions .btn.cancel {
+    background-color: #d9534f;
+    color: white;
 }
 
 /* Estilos específicos de los botones */
 .btn.add {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
 }
 
 .btn.championships {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
     text-decoration: none;
 }
 
 .btn.edit {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
     padding: 7px 15px;
     margin-bottom: 5px;
 }
 
 .btn.delete {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
     padding: 7px 15px;
 }
 
 .btn.save {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
 }
 
 .btn.cancel {
-    background-color: #008CBA;
+    background-color: #00acac;
     color: white;
 }
 
