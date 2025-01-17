@@ -1,164 +1,74 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../views/Login.vue';
-import Register from '../views/Register.vue';
-import Jugador from '../views/jugador.vue';
-import EstadisticasJugador from '@/views/estadisticasJugador.vue'; // Asegúrate de que esta ruta sea correcta
+
+// Componentes según la estructura proporcionada
+import Arbitro from '../components/Arbitros.vue';
+import Competencias from '../components/Competencias.vue';
+import Equipos from '../components/Equipos.vue';
 import Inicio from '../components/Inicio.vue';
-import RegistrosDeResultados from '../components/RegistrosDeResultados.vue';
-import Campeonato from '../views/campeonato.vue';
-import CerrarSesion from '../components/CerrarSesion.vue';
-import CrearEquipo from '../components/CrearEquipo.vue';
-import Encuentros from '../components/Encuentros.vue';
-import Encuentrosform from '../components/Encuentrosform.vue';
-import EstadisticasEquipo from '../components/EstadisticasEquipo.vue';
-import EstadisticasPartidos from '../views/estadisticasPartidos.vue';
-import PlayerList from '../components/PlayerList.vue';
-import ProfileList from '../components/ProfileList.vue';
-import Perfil from '../views/Perfil.vue';
-import Equipo from '@/views/equipo.vue';
-import detalleCampeonato from '../views/detalleCampeonato.vue';
-import Editarencuentros from '@/components/Editarencuentros.vue';
-import Arbitro from '@/views/arbitro.vue';
-import DetalleEquipo from '@/views/detalle-equipo.vue';
-import Partidos from '../views/partido.vue';
+import Jugadores from '../components/Jugadores.vue';
+import Partidos from '../components/Partidos.vue';
+import Perfil from '../components/Perfil.vue';
+import Resultados from '../components/Resultados.vue';
+import TablaDePosiciones from '../components/Tabla_de_posiciones.vue';
 
 const routes = [
+
   {
-    path: '/',
-    redirect: '/login' // Redirigir automáticamente a la ruta /login cuando se carga la aplicación
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: Register
-  },
-  {
-    path: '/jugador',
-    name: 'jugador',
-    component: Jugador,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/estadisticas-Jugador',
-    name: 'estadisticas-Jugador',
-    component: EstadisticasJugador,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
+    path: '/Jugadores',
+    name: 'Jugadores',
+    component: Jugadores,
+    meta: { requiresAuth: true } // Ruta que requiere autenticación
   },
   {
     path: '/Inicio',
-    name: 'home',
+    name: 'Inicio',
     component: Inicio,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
+    meta: { requiresAuth: true }
   },
   {
-    path: '/crearequipo',
-    name: 'crearequipo',
-    component: CrearEquipo,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/equipo',
-    name: 'equipo',
-    component: Equipo,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/detalle-equipo/',
-    name: 'DetalleEquipo',
-    component: DetalleEquipo,
-    props: true// Esta ruta requiere autenticación
-  },
-  {
-    path: '/resultados',
-    name: 'resultados',
-    component: RegistrosDeResultados,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/campeonato',
-    name: 'campeonato',
-    component: Campeonato,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-
-  {
-    path: '/detalleCampeonato',
-    name: 'detalleCampeonato',
-    component: detalleCampeonato,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-
-  {
-    path: '/cerrar-sesion',
-    name: 'cerrar-sesion',
-    component: CerrarSesion,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/encuentros',
-    name: 'encuentros',
-    component: Encuentros,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/crearencuentro',
-    name: 'crearencuentro',
-    component: Encuentrosform,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/editarencuentro',
-    name: 'editarencuentro',
-    component: Editarencuentros,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/estadisticas-equipo',
-    name: 'estadisticas-equipo',
-    component: EstadisticasEquipo,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/estadisticas-partidos',
-    name: 'estadisticas-partidos',
-    component: EstadisticasPartidos,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/partidos',
-    name: 'partidos',
-    component: Partidos,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/estadisticas-jugador',
-    name: 'estadisticas-jugador',
-    component: PlayerList,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/profiles',
-    name: 'profiles',
-    component: ProfileList,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  },
-  {
-    path: '/arbitros',
-    name: 'arbitro',
+    path: '/Arbitros',
+    name: 'Arbitros',
     component: Arbitro,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
+    meta: { requiresAuth: true }
   },
   {
-    path: '/perfil',
-    name: 'perfil',
+    path: '/Competencias',
+    name: 'Competencias',
+    component: Competencias,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Equipos',
+    name: 'Equipos',
+    component: Equipos,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Partidos',
+    name: 'Partidos',
+    component: Partidos,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Perfil',
+    name: 'Perfil',
     component: Perfil,
-    meta: { requiresAuth: true } // Esta ruta requiere autenticación
-  }
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Resultados',
+    name: 'Resultados',
+    component: Resultados,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/Tabla-posiciones',
+    name: 'Tabla-posiciones',
+    component: TablaDePosiciones,
+    meta: { requiresAuth: true }
+  },
+
+
 ];
 
 const router = createRouter({
@@ -166,18 +76,17 @@ const router = createRouter({
   routes
 });
 
+// Protección de rutas que requieren autenticación
 router.beforeEach((to, from, next) => {
   const loggedIn = localStorage.getItem('loggedIn');
-
-  // Permitir acceso a la página de inicio de sesión sin autenticación
+  
   if (to.name === 'login') {
     next();
   } else if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
-    next({ name: 'login' }); // Redirigir al usuario a la página de inicio de sesión si no está autenticado
+    next({ name: 'login' }); // Redirigir a login si no está autenticado
   } else {
     next();
   }
 });
 
 export default router;
-

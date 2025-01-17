@@ -1,240 +1,89 @@
 <template>
-  <div id="app" :class="{ 'menu-open': isMenuOpen }">
-    <template v-if="loggedIn && !isLoginView && !isRegisterView">
-      <aside class="menu" @mouseenter="isMenuOpen = true" @mouseleave="isMenuOpen = false">
-        <nav>
-          <!-- Logo y texto de la aplicación -->
-          <div class="logo-container">
-            <img src="/src/assets/images/logo.png" alt="Logo" class="logo" />
-            <span class="app-name">SOCIAL SOCCER</span>
-          </div>
-          <ul>
-            <li v-for="item in filteredMenuItems" :key="item.section" :class="{ active: isActive(item.section) }">
-              <template v-if="item.submenu">
-                <a href="#" @click.prevent="toggleSubmenu(item.section)">
-                  <i :class="`fa-solid ${item.icon}`"></i>
-                  <span>{{ item.name }}</span>
-                  <i class="fa-solid fa-chevron-right" :class="{ 'rotate-180': isSubmenuOpen(item.section) }"></i>
-                </a>
-                <ul v-show="isSubmenuOpen(item.section)">
-                  <li v-for="subItem in item.submenu" :key="subItem.section">
-                    <a href="#" @click.prevent="handleMenuItemClick(subItem)">
-                      <span>{{ subItem.name }}</span>
-                    </a>
-                  </li>
-                </ul>
-              </template>
-              <template v-else>
-                <a href="#" @click.prevent="handleMenuItemClick(item)">
-                  <i :class="`fa-solid ${item.icon}`"></i>
-                  <span>{{ item.name }}</span>
-                </a>
-              </template>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-    </template>
-    <main class="content" v-if="loggedIn && !isLoginView && !isRegisterView">
+  <div>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="../assets/images/logo.png" alt="Logo" class="logo" />
+        <span class="app-name">SOCIAL SOCCER</span>
+      </div>
+      <!-- Items del menú centrados -->
+      <ul class="nav-links">
+        <li><router-link to="/inicio">Inicio</router-link></li>
+        <li><router-link to="/perfil">Perfil</router-link></li>
+        <li><router-link to="/jugadores">Jugadores</router-link></li>
+        <li><router-link to="/equipos">Equipos</router-link></li>
+        <li><router-link to="/partidos">Partidos</router-link></li>
+        <li><router-link to="/resultados">Resultados</router-link></li>
+        <li><router-link to="/tabla-de-posiciones">Tabla de Posiciones</router-link></li>
+        <li><router-link to="/competencias">Competencias</router-link></li>
+        <li><router-link to="/arbitros">Árbitros</router-link></li>
+      </ul>
+    </nav>
+
+    <!-- El contenido se carga dependiendo de la ruta activa -->
+    <main class="content">
       <router-view></router-view>
     </main>
-    <template v-else>
-      <router-view></router-view>
-    </template>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { defineComponent } from 'vue';
 
-const router = useRouter();
-const route = useRoute();
-
-const loggedIn = localStorage.getItem('loggedIn') === 'true';
-
-const isLoginView = ref(false);
-const isRegisterView = ref(false);
-
-watch(() => route.name, (newRoute) => {
-  isLoginView.value = newRoute === 'login';
-  isRegisterView.value = newRoute === 'register';
-});
-
-const menuItems = [
-  { name: 'Inicio', icon: 'fa-home', section: 'inicio' },
-  { name: 'Perfil', icon: 'fa-user', section: 'perfil' },
-  { name: 'Encuentros', icon: 'fa-futbol', section: 'partido' },
-  { name: 'Gestión', icon: 'fa-cogs', section: 'gestion', submenu: [
-      { name: 'Gestión de Equipos', section: 'equipo' },
-      { name: 'Gestión de Jugadores', section: 'jugador' }
-    ]
-  },
-  { name: 'Estadísticas', icon: 'fa-chart-bar', section: 'estadisticas', submenu: [
-      { name: 'Estadísticas de Jugadores', section: 'estadisticas-jugador' },
-      { name: 'Estadísticas de Partidos', section: 'estadisticas-partidos' }
-    ]
-  },
-  { name: 'Campeonato', icon: 'fa-trophy', section: 'campeonato' },
-  { name: 'Árbitro', icon: 'fa-whistle', section: 'arbitro' },
-  { name: 'Cerrar Sesión', icon: 'fa-sign-out-alt', section: 'cerrar-sesion' }
-];
-
-const isMenuOpen = ref(false);
-const openSubmenus = ref([]);
-
-const closeMenu = () => {
-  isMenuOpen.value = false;
-};
-
-const toggleSubmenu = (section) => {
-  const index = openSubmenus.value.indexOf(section);
-  if (index === -1) {
-    openSubmenus.value.push(section);
-  } else {
-    openSubmenus.value.splice(index, 1);
-  }
-};
-
-const isSubmenuOpen = (section) => {
-  return openSubmenus.value.includes(section);
-};
-
-const navigateTo = (section) => {
-  closeMenu();
-  router.push({ name: section });
-};
-
-const isActive = (section) => {
-  return route.name === section;
-};
-
-const handleMenuItemClick = (item) => {
-  if (item.section === 'cerrar-sesion') {
-    handleLogout();
-  } else if (item.section === 'partido') {
-    window.location.href = 'http://localhost:5173/partidos';
-  } else if (item.section === 'inicio') {
-    window.location.href = 'http://localhost:5173/Inicio';
-  } else if (item.section === 'estadisticas-jugador') {
-    window.location.href = 'http://localhost:5173/estadisticas-Jugador';
-  } else {
-    navigateTo(item.section);
-  }
-};
-
-const handleLogout = () => {
-  localStorage.removeItem('loggedIn');
-  closeMenu();
-  router.push({ name: 'login' });
-};
-
-const filteredMenuItems = ref(menuItems.filter(item => item.section !== 'login'));
+defineComponent({});
 </script>
 
 <style scoped>
-#app {
+/* Estilos de la barra de navegación */
+.navbar {
   display: flex;
-  transition: margin-left 0.3s ease;
-}
-
-.menu {
-  width: 250px;
-  background-color: #001529;
-  color: #fff;
-  padding: 20px;
-  position: fixed;
-  left: -250px;
-  top: 0;
-  height: 100%;
-  transition: left 0.3s ease;
-}
-
-#app.menu-open .menu {
-  left: 0;
-}
-
-#app.menu-open .content {
-  margin-left: 250px;
-}
-
-.content {
-  padding: 20px;
-  width: 100%;
-  transition: margin-left 0.3s ease;
-}
-
-.menu nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu nav ul li {
-  margin-bottom: 10px;
-}
-
-.menu nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  display: flex;
+  justify-content: space-between; /* Hace que el logo se ponga en una esquina */
   align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.menu nav ul li a:hover {
-  background-color: #1890ff;
-}
-
-.menu nav ul li a i {
-  margin-right: 10px;
-}
-
-.menu nav ul li.active a {
-  background-color: #1890ff;
-  color: #fff;
-}
-
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu ul li {
-  padding-left: 20px;
-}
-
-.menu ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.menu ul li a:hover {
-  background-color: #1890ff;
-}
-
-.rotate-180 {
-  transform: rotate(180deg);
+  background-color: #1c1e21; /* Color de fondo actual del navbar */
+  color: white;
+  padding: 10px 20px;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: flex-start; /* Asegura que el logo esté a la izquierda */
 }
 
 .logo {
-  width: 50px;
   height: 50px;
-  margin-right: 10px;
+  width: auto;
 }
 
 .app-name {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  margin-left: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* Centra los items en la barra */
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px; /* Cambié el tamaño del texto para hacerlo más legible */
+}
+
+.nav-links li a:hover {
+  color: #32cd32;
+}
+
+.content {
+  padding: 20px;
+  background: #212529;  /* Fondo oscuro para que contraste bien con el navbar y demás elementos */
+  min-height: 100vh;  /* Para asegurarse que cubra toda la pantalla */
 }
 </style>

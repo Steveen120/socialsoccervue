@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- Contenido HTML de tu componente -->
-      <h1>Inicio</h1>
+      <h1>Perfil</h1>
       <!-- Aquí pueden ir los datos de la tabla -->
     </div>
   </template>
