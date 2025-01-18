@@ -14,7 +14,7 @@
         <li><router-link to="/equipos">Equipos</router-link></li>
         <li><router-link to="/partidos">Partidos</router-link></li>
         <li><router-link to="/resultados">Resultados</router-link></li>
-        <li><router-link to="/tabla-de-posiciones">Tabla de Posiciones</router-link></li>
+        <li><router-link to="/Tabla-posiciones">Tabla de Posiciones</router-link></li>
         <li><router-link to="/competencias">Competencias</router-link></li>
         <li><router-link to="/arbitros">Árbitros</router-link></li>
       </ul>

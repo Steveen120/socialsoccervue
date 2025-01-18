@@ -111,24 +111,24 @@
           <h2>MIS EQUIPOS (03)</h2>
           <div class="icon-grid">
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen2.png" alt="Bayern Munich">
+                  <img src="" alt="Bayern Munich">
                   <span class="text">Equipo</span>
               </div>
 
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen1.png" alt="Equipo dos">
+                  <img src="" alt="Equipo dos">
                   <span class="text">Equipo</span>
                 </div>
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen2.png" alt="Equipo tres">
+                  <img src="" alt="Equipo tres">
                   <span class="text">Equipo</span>
               </div>
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen1.png" alt="Equipo cuatro">
+                  <img src="" alt="Equipo cuatro">
                   <span class="text">Equipo</span>
                 </div>
                 <div class="icon-container">
-                  <img src="@/assets/perfil/imagen1.png" alt="Equipo cuatro">
+                  <img src="" alt="Equipo cuatro">
                   <span class="text">Equipo</span>
                 </div>
               <div class="icon-container">
@@ -141,24 +141,24 @@
           <h2>MIS COMPETENCIAS (03)</h2>
           <div class="icon-grid">
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen2.png" alt="Bundesliga">
+                  <img src="" alt="Bundesliga">
                   <span class="text">Competencia</span>
               </div>
               
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen1.png" alt="Champions League">
+                  <img src="" alt="Champions League">
                   <span class="text">Competencia</span>
                 </div>
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen2.png" alt="Bundesliga">
+                  <img src="" alt="Bundesliga">
                   <span class="text">Competencia</span>
                 </div>
                 <div class="icon-container">
-                  <img src="@/assets/perfil/imagen2.png" alt="Bundesliga">
+                  <img src="" alt="Bundesliga">
                   <span class="text">Competencia</span>
                 </div>
               <div class="icon-container">
-                  <img src="@/assets/perfil/imagen1.png" alt="Champions League">
+                  <img src="" alt="Champions League">
                   <span class="text">Competencia</span>
                 </div>
               <div class="icon-container">
@@ -171,23 +171,23 @@
           <h2>MIS JUGADORES (03)</h2>
           <div class="icon-grid">
               <div class="icon-container">
-                <img src="C:\Users\USUARIO\Downloads\default-avatar-profile-icon-of-social-media-user-photo-vector-removebg-preview.png" alt="Jugador 2">
+                <img src="" alt="Jugador 2">
                   <span class="text">Jugador</span>
               </div>
               
               <div class="icon-container">
-                  <img src="C:\Users\USUARIO\Downloads\default-avatar-profile-icon-of-social-media-user-photo-vector-removebg-preview.png" alt="Jugador 2">
+                  <img src="" alt="Jugador 2">
                   <span class="text">Jugador</span> 
                  </div>
                  <div class="icon-container">
-                  <img src="C:\Users\USUARIO\Downloads\default-avatar-profile-icon-of-social-media-user-photo-vector-removebg-preview.png" alt="Jugador 2">
+                  <img src="" alt="Jugador 2">
                   <span class="text">Jugador</span>  </div>
               <div class="icon-container">
-                <img src="C:\Users\USUARIO\Downloads\default-avatar-profile-icon-of-social-media-user-photo-vector-removebg-preview.png" alt="Jugador 2">
+                <img src="" alt="Jugador 2">
                   <span class="text">Jugador</span>
               </div>
               <div class="icon-container">
-                <img src="C:\Users\USUARIO\Downloads\default-avatar-profile-icon-of-social-media-user-photo-vector-removebg-preview.png" alt="Jugador 2">
+                <img src="" alt="Jugador 2">
                   <span class="text">Jugador</span>
                 </div>
               <div class="icon-container">

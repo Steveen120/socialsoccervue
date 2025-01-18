@@ -43,7 +43,7 @@
       <h3>Top goleadores</h3>
       <div class="top-players">
         <div class="player-card" v-for="player in topScorers" :key="player.name">
-          <img :src="'path/to/player/photo.png'" alt="Foto del jugador" />
+          <img :src="player.photo" :alt="player.name" />
           <span>{{ player.name }}</span>
           <div class="vertical-line"></div>
           <div class="player-info">
@@ -55,11 +55,10 @@
       <h3>Top asistencias</h3>
       <div class="top-players">
         <div class="player-card" v-for="player in topAssists" :key="player.name">
-          <img :src="'path/to/player/photo.png'" alt="Foto del jugador" />
+          <img :src="player.photo" :alt="player.name" />
           <span>{{ player.name }}</span>
           <div class="vertical-line"></div>
           <div class="player-info">
-            
             <span>{{ player.assists }}</span>
           </div>
         </div>
@@ -78,19 +77,43 @@ export default {
       teams: ["Real Betis", "LDU"],
       competitions: ["Bundesliga", "UEFA Champions League"],
       topTeams: [
-        { name: "Real Betis", logo: "path/to/logo.png" },
-        { name: "Real Betis", logo: "path/to/logo.png" },
-        { name: "Real Betis", logo: "path/to/logo.png" },
+        { name: "Real Betis", logo: "https://logos-download.com/wp-content/uploads/2016/05/Real_Betis_logo_logotipo.png" },
+        { name: "Real Betis", logo: "https://logos-download.com/wp-content/uploads/2016/05/Real_Betis_logo_logotipo.png" },
+        { name: "Real Betis", logo: "https://logos-download.com/wp-content/uploads/2016/05/Real_Betis_logo_logotipo.png" },
       ],
       topScorers: [
-        { name: "Jugador 1", goals: 15 },
-        { name: "Jugador 2", goals: 9 },
-        { name: "Jugador 3", goals: 5 },
+        {
+          name: "Jugador 1",
+          goals: 15,
+          photo: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/06/03/08/cristiano-ronaldo.jpg" // Enlace a la foto del jugador
+        },
+        {
+          name: "Jugador 2",
+          goals: 9,
+          photo: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/06/03/08/cristiano-ronaldo.jpg" // Cambia este enlace por la foto real
+        },
+        {
+          name: "Jugador 3",
+          goals: 5,
+          photo: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/06/03/08/cristiano-ronaldo.jpg"
+        },
       ],
       topAssists: [
-        { name: "Jugador 1", assists: 15 },
-        { name: "Jugador 2", assists: 9 },
-        { name: "Jugador 3", assists: 5 },
+        {
+          name: "Jugador 1",
+          assists: 15,
+          photo: "https://static.foxnews.com/foxnews.com/content/uploads/2022/12/lionel-messi1.jpg"
+        },
+        {
+          name: "Jugador 2",
+          assists: 9,
+          photo: "https://static.foxnews.com/foxnews.com/content/uploads/2022/12/lionel-messi1.jpg"
+        },
+        {
+          name: "Jugador 3",
+          assists: 5,
+          photo: "https://static.foxnews.com/foxnews.com/content/uploads/2022/12/lionel-messi1.jpg"
+        },
       ],
     };
   },
