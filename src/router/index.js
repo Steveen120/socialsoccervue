@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Componentes según la estructura proporcionada
 import Arbitro from '../components/Arbitros.vue';
 import Competencias from '../components/Competencias.vue';
 import Equipos from '../components/Equipos.vue';
@@ -10,14 +9,14 @@ import Partidos from '../components/Partidos.vue';
 import Perfil from '../components/Perfil.vue';
 import Resultados from '../components/Resultados.vue';
 import TablaDePosiciones from '../components/Tabla_de_posiciones.vue';
+import InformacionJu from '../components/informacionJu.vue'; // Importar el nuevo componente
 
 const routes = [
-
   {
     path: '/Jugadores',
     name: 'Jugadores',
     component: Jugadores,
-    meta: { requiresAuth: true } // Ruta que requiere autenticación
+    meta: { requiresAuth: true } 
   },
   {
     path: '/Inicio',
@@ -67,8 +66,12 @@ const routes = [
     component: TablaDePosiciones,
     meta: { requiresAuth: true }
   },
-
-
+  {
+    path: '/informacion-ju', 
+    name: 'InformacionJugador',
+    component: InformacionJu,
+    meta: { requiresAuth: true }
+  }
 ];
 
 const router = createRouter({
