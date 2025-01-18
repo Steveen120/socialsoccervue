@@ -9,8 +9,9 @@ import Partidos from '../components/Partidos.vue';
 import Perfil from '../components/Perfil.vue';
 import Resultados from '../components/Resultados.vue';
 import TablaDePosiciones from '../components/Tabla_de_posiciones.vue';
-import InformacionJu from '../components/informacionJu.vue';// Importar el nuevo componente
+import InformacionJu from '../components/informacionJu.vue';
 import Resultadosequip from '@/components/resultadosequip.vue';
+import TablaCompleta from '@/components/Tabla_completa.vue'; // Nuevo import
 
 const routes = [
   {
@@ -77,6 +78,12 @@ const routes = [
     path: '/resultadosequip',
     name: 'Resultadosequip',
     component: Resultadosequip,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/tabla-completa', // Nueva ruta
+    name: 'TablaCompleta',
+    component: TablaCompleta,
     meta: { requiresAuth: true }
   }
 ];

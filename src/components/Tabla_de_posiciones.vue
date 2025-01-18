@@ -1,7 +1,6 @@
 <template>
   <div class="background">
     <div class="live-and-next">
-      
       <div class="match-result">
         <div class="team-row">
           <img :src="matchResult.team1Logo" alt="{{ matchResult.team1 }}" class="team-logo">
@@ -48,8 +47,10 @@
       </thead>
       <tbody>
         <tr v-for="team in standings" :key="team.name">
-          <td><img :src="team.logo" alt="Escudo de {{ team.name }}" class="team-logo">{{ team.name }}</td>
-         
+          <td>
+            <img :src="team.logo" alt="Escudo de {{ team.name }}" class="team-logo">
+            {{ team.name }}
+          </td>
           <td>{{ team.played }}</td>
           <td>{{ team.wins }}</td>
           <td>{{ team.draws }}</td>
@@ -59,7 +60,7 @@
         </tr>
       </tbody>
     </table>
-    <router-link to="/">Ver toda la clasificación ></router-link>
+    <router-link to="/tabla-completa">Ver toda la clasificación ></router-link>
   </div>
 </template>
 
@@ -88,41 +89,42 @@ export default {
         competition: 'La Liga'
       },
       standings: [
-      {
-        name: 'Atlético de Madrid',
-        logo: 'https://img.planetafobal.com/2016/12/atletico-de-madrid-escudo-nuevo-2017-g.jpg',
-        played: 19,
-        wins: 13,
-        draws: 5,
-        losses: 1,
-        goalDifference: 22,
-        points: 44
-      },
-      {
-        name: 'Real Madrid',
-        logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png',
-        played: 19,
-        wins: 13,
-        draws: 4,
-        losses: 2,
-        goalDifference: 24,
-        points: 43
-      },
-      {
-        name: 'FC Barcelona',
-        logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png',
-        played: 19,
-        wins: 12,
-        draws: 2,
-        losses: 5,
-        goalDifference: 29,
-        points: 38
-      },
-    ]
+        {
+          name: 'Atlético de Madrid',
+          logo: 'https://img.planetafobal.com/2016/12/atletico-de-madrid-escudo-nuevo-2017-g.jpg',
+          played: 19,
+          wins: 13,
+          draws: 5,
+          losses: 1,
+          goalDifference: 22,
+          points: 44
+        },
+        {
+          name: 'Real Madrid',
+          logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png',
+          played: 19,
+          wins: 13,
+          draws: 4,
+          losses: 2,
+          goalDifference: 24,
+          points: 43
+        },
+        {
+          name: 'FC Barcelona',
+          logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1200px-FC_Barcelona_%28crest%29.svg.png',
+          played: 19,
+          wins: 12,
+          draws: 2,
+          losses: 5,
+          goalDifference: 29,
+          points: 38
+        }
+      ]
     };
-  },
+  }
 };
 </script>
+
 
 <style scoped>
 .background {

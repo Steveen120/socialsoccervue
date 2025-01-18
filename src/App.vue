@@ -1,12 +1,10 @@
 <template>
   <div>
-    <!-- Barra de navegación -->
     <nav class="navbar">
       <div class="logo-container">
-        <img src="../assets/images/logo.png" alt="Logo" class="logo" />
+        <img src="./assets/images/logo.png" alt="Logo" class="logo" />
         <span class="app-name">SOCIAL SOCCER</span>
       </div>
-      <!-- Items del menú centrados -->
       <ul class="nav-links">
         <li><router-link to="/inicio">Inicio</router-link></li>
         <li><router-link to="/perfil">Perfil</router-link></li>
@@ -20,7 +18,6 @@
       </ul>
     </nav>
 
-    <!-- El contenido se carga dependiendo de la ruta activa -->
     <main class="content">
       <router-view></router-view>
     </main>
@@ -34,12 +31,11 @@ defineComponent({});
 </script>
 
 <style scoped>
-/* Estilos de la barra de navegación */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Hace que el logo se ponga en una esquina */
+  justify-content: space-between; 
   align-items: center;
-  background-color: #1c1e21; /* Color de fondo actual del navbar */
+  background-color: #1c1e21; 
   color: white;
   padding: 10px 20px;
 }
@@ -47,7 +43,7 @@ defineComponent({});
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Asegura que el logo esté a la izquierda */
+  justify-content: flex-start; 
 }
 
 .logo {
@@ -67,14 +63,14 @@ defineComponent({});
   gap: 25px;
   margin: 0;
   padding: 0;
-  justify-content: center; /* Centra los items en la barra */
+  justify-content: center; 
 }
 
 .nav-links li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px; /* Cambié el tamaño del texto para hacerlo más legible */
+  font-size: 16px; 
 }
 
 .nav-links li a:hover {
@@ -83,7 +79,7 @@ defineComponent({});
 
 .content {
   padding: 20px;
-  background: #212529;  /* Fondo oscuro para que contraste bien con el navbar y demás elementos */
-  min-height: 100vh;  /* Para asegurarse que cubra toda la pantalla */
+  background: #212529;  
+  min-height: 100vh;  
 }
 </style>

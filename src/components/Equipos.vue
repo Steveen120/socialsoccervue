@@ -1,13 +1,11 @@
 <template>
   <div class="fc-barcelona-page">
-    <!-- Encabezado -->
     <header class="header">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzD-oxpXbVukNqd8tcDZEmCNcjgK2sG1gang&s" alt="FC Barcelona" class="logo" />
       <h1>FC Barcelona</h1>
       <button class="btn-ver-jugadores">Ver jugadores</button>
     </header>
 
-    <!-- Barra de navegación -->
     <nav class="navigation">
       <ul>
         <li class="active">Resumen</li>

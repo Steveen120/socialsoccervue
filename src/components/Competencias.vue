@@ -1,6 +1,5 @@
 <template>
   <div class="contenedor">
-    <!-- Sección de información -->
     <div class="info-container">
       <div class="imagen-container">
         <img
@@ -10,7 +9,6 @@
         <h3>Acuerdo Ministerial</h3>
         <p>N.º 625 del 19/09/2000</p>
       </div>
-      <!-- Línea divisoria -->
       <div class="linea-separadora"></div>
       <div class="texto-container">
         <p>
@@ -22,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Sección del mapa -->
     <div class="map-container">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.808456067916!2d-78.52215313012807!3d-0.12740713514658342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d5851f76dd4599%3A0xf3c0c6b982f02929!2sLiga%20Barrial%20Comite%20La%20Campi%C3%B1a%20de%20Atucucho%20FLQ!5e0!3m2!1ses-419!2sec!4v1737137311176!5m2!1ses-419!2sec"

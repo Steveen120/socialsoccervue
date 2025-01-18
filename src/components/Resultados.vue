@@ -39,7 +39,6 @@
       </div>
     </div>
   
-    <!-- Match Card 2 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -95,7 +94,6 @@
   <div class="fecha">Diciembre 2024</div>
     <div class="matches-rows">
       
-    <!-- Match Card 1 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -121,7 +119,6 @@
       </div>
     </div>
   
-    <!-- Match Card 2 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -154,7 +151,6 @@
   <div class="fecha">Noviembre 2024</div>
     <div class="matches-row">
       
-    <!-- Match Card 1 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -180,7 +176,6 @@
       </div>
     </div>
   
-    <!-- Match Card 2 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -206,7 +201,6 @@
       </div>
     </div>
   
-    <!-- Match Card 3 -->
     <div class="match-card">
       <div class="match-content">
         <div class="team-section">
@@ -380,7 +374,6 @@
     font-family: Arial, sans-serif;
   }
   
-  /* Aseguramos que en móviles se pueda hacer scroll horizontal */
   
   
   @media screen and (max-width: 768px) {
@@ -394,8 +387,8 @@
     }
   
     .match-card {
-      width: 100%; /* Ocupa el ancho completo en móviles */
-      margin-bottom: 1rem; /* Espaciado entre las tarjetas */
+      width: 100%;
+      margin-bottom: 1rem; 
     }
   
     .team-section {
@@ -419,7 +412,6 @@
     }
   }
   
-  /* Estilos para tablets (pantallas medianas) */
   @media screen and (min-width: 769px) and (max-width: 1024px) {
     .matches-row, .matches-rows {
       gap: 0.5rem; 
@@ -444,7 +436,6 @@
     }
   }
   
-  /* Estilos para pantallas grandes */
   @media screen and (min-width: 1025px) {
     .matches-row, .matches-rows {
       gap: 1rem;

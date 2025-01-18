@@ -1,6 +1,5 @@
 <template>
   <div class="dashboard">
-    <!-- Header -->
     <header class="header">
       <div class="welcome">
         <h1>BIENVENIDO</h1>
@@ -10,7 +9,6 @@
     </header>
     <hr>
 
-    <!-- Filtros -->
     <section class="filters">
       <div>
         <label for="teams">Mis equipos</label>
@@ -28,7 +26,6 @@
       </div>
     </section>
 
-    <!-- Top Rankings -->
     <section class="rankings">
       <h3>Top</h3>
       <div class="top-teams">

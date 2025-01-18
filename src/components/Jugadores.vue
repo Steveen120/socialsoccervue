@@ -30,7 +30,6 @@
       </div>
     </div>
 
-    <!-- Trofeos -->
     <div class="trophies-section">
       <div class="trophy-group">
         <h2>Trofeos Grupales</h2>
@@ -89,7 +88,6 @@ export default {
   },
   methods: {
     goToPlayerInfo() {
-      // Redirige a la ruta 'informacion-ju'
       this.$router.push('/informacion-ju');
     },
   },

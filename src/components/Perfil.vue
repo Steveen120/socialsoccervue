@@ -101,7 +101,6 @@
       <div class="containerline">
           <div class="separator"></div>
   
-          <!-- Content after the separator would go here -->
       </div>
     </div>
   </div>
@@ -209,10 +208,8 @@
       const cancelBtn = document.getElementById('cancelBtn');
       const editForm = document.getElementById('editForm');
   
-      // Abrir modal
       editBtn.onclick = function() {
           modal.style.display = "block";
-          // Rellenar el formulario con los datos actuales
           document.getElementById('editName').value = document.getElementById('userName').textContent;
           document.getElementById('editDescription').value = document.getElementById('userDescription').textContent;
           document.getElementById('editEmail').value = document.getElementById('userEmail').textContent;
@@ -238,7 +235,6 @@
       editForm.onsubmit = function(e) {
           e.preventDefault();
           
-          // Actualizar los datos en la página
           document.getElementById('userName').textContent = document.getElementById('editName').value;
           document.getElementById('userDescription').textContent = document.getElementById('editDescription').value;
           document.getElementById('userEmail').textContent = document.getElementById('editEmail').value;
@@ -247,7 +243,6 @@
           document.getElementById('userTeam').textContent = 'Equipo: ' + document.getElementById('editTeam').value;
           document.getElementById('userSkills').textContent = document.getElementById('editSkills').value;
   
-          // Cerrar el modal
           modal.style.display = "none";
   
       
@@ -343,7 +338,6 @@
     background-color: #504e4e;
   }
   
-  /*Cards de infromacion*/
   
   .container {
    
@@ -388,7 +382,7 @@
               display: flex;
               align-items: center;
               justify-content: center;
-              order: 2; /* Mueve el icono al final */
+              order: 2; 
           }
   
           .star {
@@ -405,11 +399,7 @@
               background-color: #3f3f46;
               margin: 20px 0;
           }
-  /*---------------------*/
   
-  
-  
-  /*contendeor */
   .contenedor-equipos{
     text-align: center;
     justify-content: center;
@@ -476,8 +466,7 @@
               color: #6b7280;
           }
   
-  /*modal*/
-          .modal {
+    .modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -591,8 +580,7 @@
       margin: 10% auto;
     }
   }
-  /* Estilo para dispositivos pequeños (teléfonos) */
-/* Para dispositivos pequeños (teléfonos móviles, hasta 480px) */
+ 
 @media (max-width: 480px) {
   .container-perfil {
     width: 100%;
@@ -647,7 +635,6 @@
   }
 }
 
-/* Para dispositivos medianos (tabletas, hasta 768px) */
 @media (max-width: 768px) {
   .container-perfil {
     width: 90%;
@@ -685,7 +672,6 @@
   }
 }
 
-/* Para pantallas grandes (escritorios pequeños, hasta 1024px) */
 @media (max-width: 1024px) {
   .container {
     gap: 24px;
@@ -705,29 +691,27 @@
   }
 }
 
-/* Para pantallas muy grandes (escritorios anchos, más de 1024px) */
 @media (max-width: 480px) {
   .avatar {
-    width: 90px; /* Reducido para pantallas pequeñas */
+    width: 90px; 
     height: 90px;
   }
 
   .button {
-    font-size: 14px; /* Botón más pequeño */
-    padding: 8px 12px; /* Reduce relleno del botón */
+    font-size: 14px; 
+    padding: 8px 12px; 
   }
 }
 
-/* Para dispositivos medianos (tabletas, hasta 768px) */
 @media (max-width: 768px) {
   .avatar {
-    width: 110px; /* Reducido para pantallas medianas */
+    width: 110px; 
     height: 110px;
   }
 
   .button {
-    font-size: 16px; /* Botón ligeramente más pequeño */
-    padding: 10px 16px; /* Ajusta relleno del botón */
+    font-size: 16px; 
+    padding: 10px 16px; 
   }
 }
 

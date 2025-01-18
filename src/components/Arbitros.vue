@@ -1,7 +1,6 @@
 <template>
   <div class="main-container">
 
-    <!-- Encabezado con Información del Árbitro -->
     <div class="header">
       <div class="profile-info">
         <img src="@/assets/referee.jpg" alt="Foto Árbitro" class="referee-photo" />
@@ -16,7 +15,6 @@
         </div>
       </div>
 
-      <!-- Contenedores de Contactos, Datos Adicionales y Funciones dentro de la sección del árbitro -->
       <div class="contact-functions">
         <div class="contact-box">
           <h3>Contactos</h3>
@@ -35,9 +33,7 @@
       </div>
     </div>
 
-    <!-- Tabla con Información de los Árbitros -->
     <div class="referee-list">
-      <!-- Año de la lista con selección dinámica -->
       <h2>
         Año de la lista: 
         <button @click="toggleYearDropdown" class="year-button">
@@ -86,9 +82,9 @@
 export default {
   data() {
     return {
-      selectedYear: "2024", // Año inicial
-      showDropdown: false, // Para controlar el desplegable
-      years: [2020, 2021, 2022, 2023, 2024], // Lista de años disponibles
+      selectedYear: "2024", 
+      showDropdown: false, 
+      years: [2020, 2021, 2022, 2023, 2024], 
       referees: [
         {
           id: 1,
@@ -178,7 +174,7 @@ export default {
           yellow: 35,
           red: 6,
         }
-        // Puedes agregar más árbitros aquí si es necesario...
+        
       ],
     };
   },
@@ -188,14 +184,13 @@ export default {
     },
     selectYear(year) {
       this.selectedYear = year;
-      this.showDropdown = false; // Cerrar el desplegable
+      this.showDropdown = false; 
     }
   },
 };
 </script>
 
 <style scoped>
-/* Nuevos estilos para el botón y desplegable de años */
 .year-button {
   background-color: #4caf50;
   color: #fff;
@@ -247,7 +242,6 @@ export default {
   margin-left: 10px;
 }
 
-/* Barra de navegación */
 .navbar {
   background-color: #333;
   padding: 10px;
@@ -279,7 +273,6 @@ export default {
   border-radius: 5px;
 }
 
-/* Estilos generales */
 .main-container {
   padding: 20px;
   background-color: #1d1f23;
@@ -327,7 +320,7 @@ export default {
   justify-content: space-between;
   gap: 20px;
   width: 60%;
-  margin-top: 20px; /* Ajuste del espacio entre el perfil y los cuadros */
+  margin-top: 20px; 
 }
 
 .contact-box, .functions-box, .roles-box {
@@ -335,7 +328,7 @@ export default {
   padding: 15px;
   border-radius: 8px;
   border: 1px solid #555;
-  width: 32%; /* Ajuste para alinearse en línea */
+  width: 32%; 
 }
 
 .contact-box h3, .functions-box h3, .roles-box h3 {
@@ -353,7 +346,6 @@ export default {
   margin-right: 8px;
 }
 
-/* Tabla de Árbitros */
 .referee-list h2 {
   margin-bottom: 10px;
   font-size: 18px;
@@ -406,7 +398,6 @@ table td {
   color: #fff;
 }
 
-/* Ajustes adicionales para pantallas más pequeñas */
 @media (max-width: 768px) {
   .contact-functions {
     flex-direction: column;
