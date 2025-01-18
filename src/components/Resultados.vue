@@ -18,7 +18,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -26,7 +26,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -35,7 +35,7 @@
       
       <div class="match-info">
         <span class="date">Fin del partido - 25/01/2025</span>
-        <span class="status">LaLiga</span>
+        <a href="/resultadosequip" class="status">LaLiga</a>
       </div>
     </div>
   
@@ -44,7 +44,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -52,7 +52,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -70,7 +70,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -78,7 +78,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -100,7 +100,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -108,7 +108,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -126,7 +126,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -134,7 +134,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -159,7 +159,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -167,7 +167,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>
@@ -185,7 +185,7 @@
       <div class="match-content">
         <div class="team-section">
           <div class="team">
-            <img src="" alt="FC Barcelona" class="team-logo">
+            <img src="@/assets/perfil/imagen1.png" alt="FC Barcelona" class="team-logo">
             <span class="team-name">FC Barcelona</span>
           </div>
           <span class="score">5</span>
@@ -193,7 +193,7 @@
         
         <div class="team-section">
           <div class="team">
-            <img src="" alt="Real Betis" class="team-logo">
+            <img src="@/assets/perfil/imagen2.png" alt="Real Betis" class="team-logo">
             <span class="team-name">Real Betis</span>
           </div>
           <span class="score">1</span>

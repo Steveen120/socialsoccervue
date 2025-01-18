@@ -9,14 +9,15 @@ import Partidos from '../components/Partidos.vue';
 import Perfil from '../components/Perfil.vue';
 import Resultados from '../components/Resultados.vue';
 import TablaDePosiciones from '../components/Tabla_de_posiciones.vue';
-import InformacionJu from '../components/informacionJu.vue'; // Importar el nuevo componente
+import InformacionJu from '../components/informacionJu.vue';// Importar el nuevo componente
+import Resultadosequip from '@/components/resultadosequip.vue';
 
 const routes = [
   {
     path: '/Jugadores',
     name: 'Jugadores',
     component: Jugadores,
-    meta: { requiresAuth: true } 
+    meta: { requiresAuth: true }
   },
   {
     path: '/Inicio',
@@ -67,9 +68,15 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/informacion-ju', 
+    path: '/informacion-ju',
     name: 'InformacionJugador',
     component: InformacionJu,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/resultadosequip',
+    name: 'Resultadosequip',
+    component: Resultadosequip,
     meta: { requiresAuth: true }
   }
 ];
@@ -82,7 +89,7 @@ const router = createRouter({
 // Protección de rutas que requieren autenticación
 router.beforeEach((to, from, next) => {
   const loggedIn = localStorage.getItem('loggedIn');
-  
+
   if (to.name === 'login') {
     next();
   } else if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
