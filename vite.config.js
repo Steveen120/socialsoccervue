@@ -4,17 +4,18 @@ import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const _dirname = dirname(_filename);
 
 export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: [
-      {
-        find: '@', // Tu alias
-        replacement: resolve(__dirname, './src'), 
-      },
+      { find: '@', replacement: resolve(__dirname, './src') }
     ],
   },
-  base: '/',
+  server: {
+    host: '0.0.0.0', // Permite acceso en Railway
+    port: process.env.PORT || 5173, // Puerto dinámico en Railway
+    strictPort: true,
+  },
 });
