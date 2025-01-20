@@ -3,8 +3,9 @@ import vue from '@vitejs/plugin-vue';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
+// Definir __filename y __dirname para ESM
 const __filename = fileURLToPath(import.meta.url);
-const _dirname = dirname(_filename);
+const __dirname = dirname(__filename);  // Aquí debe ser __dirname, no _dirname
 
 export default defineConfig({
   plugins: [vue()],
