@@ -14,7 +14,7 @@ import Resultadosequip from '@/components/resultadosequip.vue';
 import TablaCompleta from '@/components/Tabla_completa.vue';
 import Login from '../components/Login.vue'; // Asegúrate de importar el componente de Login
 
-const routes = [ 
+const routes = [
   { path: '/', name: 'Inicio', component: Inicio, meta: { requiresAuth: true } },
   { path: '/Jugadores', name: 'Jugadores', component: Jugadores, meta: { requiresAuth: true } },
   { path: '/Arbitros', name: 'Arbitros', component: Arbitro, meta: { requiresAuth: true } },
