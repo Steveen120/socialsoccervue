@@ -23,5 +23,8 @@
   "description": "El proyecto que bancan chat XD\r el porytecto",
   "main": "vite.config.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
