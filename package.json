@@ -4,13 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview --host 0.0.0.0 --port $PORT"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port $PORT"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "axios": "^1.7.2",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "axios": "^1.7.9",
     "chart.js": "^4.4.3",
     "sweetalert2": "^11.12.4",
     "vue": "^3.4.29",
@@ -18,6 +20,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
     "vite": "^5.3.5"
   },
   "description": "El proyecto que bancan chat XD\r el porytecto",
@@ -25,6 +30,6 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   }
 }

@@ -1,85 +1,145 @@
 <template>
-  <div>
-    <nav class="navbar">
+  <div :class="{ 'dark': isDarkMode }, 'overflow-auto' " >
+    <nav class="navbar bg-white dark:bg-bg-dark dark:text-white">
       <div class="logo-container">
-        <img src="./assets/images/logo.png" alt="Logo" class="logo" />
+        <div class="w-12 h-12">
+          <img src="./assets/images/logo.png" alt="Logo" class=" object-contain" />
+        </div>
         <span class="app-name">SOCIAL SOCCER</span>
       </div>
-      <ul class="nav-links">
-        <li><router-link to="/inicio">Inicio</router-link></li>
-        <li><router-link to="/perfil">Perfil</router-link></li>
-        <li><router-link to="/jugadores">Jugadores</router-link></li>
-        <li><router-link to="/equipos">Equipos</router-link></li>
-        <li><router-link to="/partidos">Partidos</router-link></li>
-        <li><router-link to="/resultados">Resultados</router-link></li>
-        <li><router-link to="/Tabla-posiciones">Tabla de Posiciones</router-link></li>
-        <li><router-link to="/competencias">Competencias</router-link></li>
-        <li><router-link to="/arbitros">Árbitros</router-link></li>
-      </ul>
+      <div class="hidden md:block">
+        <div class="flex gap-8">
+          <ul class="nav-links">
+            <li>
+              <router-link to="/" exact-active-class="active">
+                <span class="dark:text-white">Inicio</span>
+              </router-link>
+            </li>
+            <li
+              @mouseover="showCategoriasMenu = true"
+              @mouseleave="showCategoriasMenu = false"
+              class="relative"
+            >
+              <span class="cursor-pointer">Categorías</span>
+              <CategoriasMenu
+                v-if="showCategoriasMenu"
+                class="absolute top-full left-0 mt-2"
+              />
+            </li>
+            <li
+              @mouseover="showUsuarioMenu = true"
+              @mouseleave="showUsuarioMenu = false"
+              class="relative"
+            >
+              <span class="cursor-pointer">Usuario</span>
+              <UsuarioMenu
+                v-if="showUsuarioMenu"
+                :isLoggedIn="isLoggedIn"
+                @logout="logout"
+                class="absolute top-full left-0 mt-2"
+              />
+            </li>
+          </ul>
+          <!-- Botón de modo oscuro -->
+          <div class="toggle-wrapper flex items-center gap-2">
+            <div class="toggle">
+              <input
+                id="dark-mode-toggle"
+                type="checkbox"
+                v-model="isDarkMode"
+                class="hidden"
+              />
+              <label
+                for="dark-mode-toggle"
+                class="w-12 h-6 bg-gray-400 dark:bg-gray-600 rounded-full relative cursor-pointer"
+              >
+                <span
+                  class="block w-6 h-6 bg-black dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
+                  :class="{ 'translate-x-6': isDarkMode }"
+                ></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block md:hidden">
+        <!-- <div class="flex gap-8">
+          <ul class="nav-links">
+            <li>
+              <router-link to="/" exact-active-class="active">
+                <span>Inicio</span>
+              </router-link>
+            </li>
+            <li
+              @mouseover="showCategoriasMenu = true"
+              @mouseleave="showCategoriasMenu = false"
+              class="relative"
+            >
+              <span class="cursor-pointer">Categorías</span>
+              <CategoriasMenu
+                v-if="showCategoriasMenu"
+                class="absolute top-full left-0 mt-2"
+              />
+            </li>
+            <li
+              @mouseover="showUsuarioMenu = true"
+              @mouseleave="showUsuarioMenu = false"
+              class="relative"
+            >
+              <span class="cursor-pointer">Usuario</span>
+              <UsuarioMenu
+                v-if="showUsuarioMenu"
+                :isLoggedIn="isLoggedIn"
+                @logout="logout"
+                class="absolute top-full left-0 mt-2"
+              />
+            </li>
+          </ul>
+          <div class="toggle-wrapper flex items-center gap-2">
+            <div class="toggle">
+              
+              <input
+                id="dark-mode-toggle"
+                type="checkbox"
+                v-model="isDarkMode"
+                class="hidden"
+              />
+              <label
+                for="dark-mode-toggle"
+                class="w-12 h-6 bg-gray-400 dark:bg-gray-600 rounded-full relative cursor-pointer"
+              >
+                <span
+                  class="block w-6 h-6 bg-black dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
+                  :class="{ 'translate-x-6': isDarkMode }"
+                ></span>
+              </label>
+            </div>
+          </div>
+        </div> -->
+      <NavbarResponsive />
+      </div>
     </nav>
 
-    <main class="content">
+    <main class="content bg-gray-100 dark:bg-bg-dark dark:text-white p-4 md:p-12">
       <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script setup>
-import { defineComponent } from 'vue';
+import { ref } from "vue";
+import "tailwindcss/tailwind.css";
+import CategoriasMenu from "./components/CategoriasMenu.vue";
+import UsuarioMenu from "./components/UsuarioMenu.vue";
+import NavbarResponsive from "./components/NavbarResponsive.vue";
 
-defineComponent({});
+const showCategoriasMenu = ref(false);
+const showUsuarioMenu = ref(false);
+const isLoggedIn = ref(false); // Cambia esto según el estado de la sesión
+const isDarkMode = ref(false);
+
+const logout = () => {
+  isLoggedIn.value = false;
+  // Lógica para cerrar sesión
+};
 </script>
-
-<style scoped>
-.navbar {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  background-color: #1c1e21; 
-  color: white;
-  padding: 10px 20px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-}
-
-.logo {
-  height: 50px;
-  width: auto;
-}
-
-.app-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-  justify-content: center; 
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 16px; 
-}
-
-.nav-links li a:hover {
-  color: #32cd32;
-}
-
-.content {
-  padding: 20px;
-  background: #212529;  
-  min-height: 100vh;  
-}
-</style>

@@ -1,0 +1,94 @@
+{
+    "jugadores": [
+        {
+            "name": "Lionel Messi",
+            "team": "FC Barcelona",
+            "position": "Delantero",
+            "goals": 30,
+            "assists": 12,
+            "matches": 25,
+            "url": "/jugadores/lionel-messi"
+        },
+        {
+            "name": "Cristiano Ronaldo",
+            "team": "Juventus",
+            "position": "Delantero",
+            "goals": 28,
+            "assists": 10,
+            "matches": 24,
+            "url": "/jugadores/cristiano-ronaldo"
+        },
+        {
+            "name": "Neymar Jr",
+            "team": "Paris Saint-Germain",
+            "position": "Delantero",
+            "goals": 20,
+            "assists": 15,
+            "matches": 22,
+            "url": "/jugadores/neymar-jr"
+        },
+        {
+            "name": "Kylian Mbappé",
+            "team": "Paris Saint-Germain",
+            "position": "Delantero",
+            "goals": 18,
+            "assists": 10,
+            "matches": 21,
+            "url": "/jugadores/kylian-mbappe"
+        },
+        {
+            "name": "Robert Lewandowski",
+            "team": "Bayern Munich",
+            "position": "Delantero",
+            "goals": 25,
+            "assists": 8,
+            "matches": 23,
+            "url": "/jugadores/robert-lewandowski"
+        },
+        {
+            "name": "Karim Benzema",
+            "team": "Real Madrid",
+            "position": "Delantero",
+            "goals": 22,
+            "assists": 9,
+            "matches": 24,
+            "url": "/jugadores/karim-benzema"
+        },
+        {
+            "name": "Mohamed Salah",
+            "team": "Liverpool",
+            "position": "Delantero",
+            "goals": 21,
+            "assists": 11,
+            "matches": 23,
+            "url": "/jugadores/mohamed-salah"
+        },
+        {
+            "name": "Erling Haaland",
+            "team": "Borussia Dortmund",
+            "position": "Delantero",
+            "goals": 19,
+            "assists": 7,
+            "matches": 20,
+            "url": "/jugadores/erling-haaland"
+        },
+        {
+            "name": "Romelu Lukaku",
+            "team": "Inter Milan",
+            "position": "Delantero",
+            "goals": 20,
+            "assists": 8,
+            "matches": 22,
+            "url": "/jugadores/romelu-lukaku"
+        },
+        {
+            "name": "Harry Kane",
+            "team": "Tottenham Hotspur",
+            "position": "Delantero",
+            "goals": 18,
+            "assists": 13,
+            "matches": 23,
+            "url": "/jugadores/harry-kane"
+        }
+    ]
+}

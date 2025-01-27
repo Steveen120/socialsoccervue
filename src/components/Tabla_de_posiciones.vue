@@ -126,7 +126,7 @@ export default {
 </script>
 
 
-<style scoped>
+<!-- <style scoped>
 .background {
   background-color: #2b2b3d;
   padding: 20px;
@@ -202,4 +202,4 @@ tbody td {
   padding: 10px;
   text-align: center;
 }
-</style>
+</style> -->

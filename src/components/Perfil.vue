@@ -208,57 +208,53 @@
       const cancelBtn = document.getElementById('cancelBtn');
       const editForm = document.getElementById('editForm');
   
-      editBtn.onclick = function() {
-          modal.style.display = "block";
-          document.getElementById('editName').value = document.getElementById('userName').textContent;
-          document.getElementById('editDescription').value = document.getElementById('userDescription').textContent;
-          document.getElementById('editEmail').value = document.getElementById('userEmail').textContent;
-          document.getElementById('editPhone').value = document.getElementById('userPhone').textContent;
-          document.getElementById('editGender').value = document.getElementById('userGender').textContent.split(': ')[1];
-          document.getElementById('editTeam').value = document.getElementById('userTeam').textContent.split(': ')[1];
-          document.getElementById('editSkills').value = document.getElementById('userSkills').textContent;
-      }
+      // editBtn.onclick = function() {
+      //     modal.style.display = "block";
+      //     document.getElementById('editName').value = document.getElementById('userName').textContent;
+      //     document.getElementById('editDescription').value = document.getElementById('userDescription').textContent;
+      //     document.getElementById('editEmail').value = document.getElementById('userEmail').textContent;
+      //     document.getElementById('editPhone').value = document.getElementById('userPhone').textContent;
+      //     document.getElementById('editGender').value = document.getElementById('userGender').textContent.split(': ')[1];
+      //     document.getElementById('editTeam').value = document.getElementById('userTeam').textContent.split(': ')[1];
+      //     document.getElementById('editSkills').value = document.getElementById('userSkills').textContent;
+      // }
   
   
-      cancelBtn.onclick = function() {
-          modal.style.display = "none";
-      }
-  
-    
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
+      // cancelBtn.onclick = function() {
+      //     modal.style.display = "none";
+      // }
   
     
-      editForm.onsubmit = function(e) {
-          e.preventDefault();
+      // window.onclick = function(event) {
+      //     if (event.target == modal) {
+      //         modal.style.display = "none";
+      //     }
+      // }
+  
+    
+      // editForm.onsubmit = function(e) {
+      //     e.preventDefault();
           
-          document.getElementById('userName').textContent = document.getElementById('editName').value;
-          document.getElementById('userDescription').textContent = document.getElementById('editDescription').value;
-          document.getElementById('userEmail').textContent = document.getElementById('editEmail').value;
-          document.getElementById('userPhone').textContent = document.getElementById('editPhone').value;
-          document.getElementById('userGender').textContent = 'Género: ' + document.getElementById('editGender').value;
-          document.getElementById('userTeam').textContent = 'Equipo: ' + document.getElementById('editTeam').value;
-          document.getElementById('userSkills').textContent = document.getElementById('editSkills').value;
+      //     document.getElementById('userName').textContent = document.getElementById('editName').value;
+      //     document.getElementById('userDescription').textContent = document.getElementById('editDescription').value;
+      //     document.getElementById('userEmail').textContent = document.getElementById('editEmail').value;
+      //     document.getElementById('userPhone').textContent = document.getElementById('editPhone').value;
+      //     document.getElementById('userGender').textContent = 'Género: ' + document.getElementById('editGender').value;
+      //     document.getElementById('userTeam').textContent = 'Equipo: ' + document.getElementById('editTeam').value;
+      //     document.getElementById('userSkills').textContent = document.getElementById('editSkills').value;
   
-          modal.style.display = "none";
+      //     modal.style.display = "none";
   
       
-          console.log('Perfil actualizado');
-      }
+      //     console.log('Perfil actualizado');
+      // }
   });
   
   </script>
   
-  <style>
-   
-  body{
-    background-color: #1E1E1E;
-    padding: 10px;
-  }
-  
+  <!-- <style>
+
+
   .container-perfil{
     width: 100%;
     margin: auto;
@@ -285,7 +281,6 @@
   
   .date {
     font-size: 0.85rem;
-    color: #999;
   }
   
   .profile-content {
@@ -407,14 +402,7 @@
     section {
               margin-bottom: 32px;
           }
-  
-          h2 {
-              color: #9ca3af;
-              font-size: 14px;
-              font-weight: 500;
-              margin-bottom: 16px;
-          }
-  
+
           .icon-grid {
             justify-content: center;
               display: flex;
@@ -550,8 +538,8 @@
   
   .btn-cancel:hover {
     background-color: #f0f0f0;
-  }
-  button {
+  } 
+   button {
     padding: 10px 20px;
     background-color: #000;
     color: white;
@@ -563,9 +551,9 @@
   
   button:hover {
     background-color: #333;
-  }
+  } 
   
-  @media (max-width: 768px) {
+   @media (max-width: 768px) {
     .user-section {
       flex-direction: column;
       align-items: flex-start;
@@ -713,6 +701,6 @@
     font-size: 16px; 
     padding: 10px 16px; 
   }
-}
+} 
 
-  </style>
+  </style> -->

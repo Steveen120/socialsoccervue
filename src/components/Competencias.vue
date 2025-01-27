@@ -42,7 +42,7 @@ export default {
 
 
 
-<style scoped>
+<!-- <style scoped>
 .contenedor {
   background-color: #232629;
   color: white;
@@ -103,4 +103,4 @@ export default {
   border-radius: 10px;
   overflow: hidden;
 }
-</style>
+</style> -->

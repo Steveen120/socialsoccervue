@@ -62,7 +62,7 @@
   };
   </script>
   
-  <style scoped>
+  <!-- <style scoped>
   .player-info-container {
     padding: 20px;
     background-color: #1d1f23;
@@ -124,5 +124,5 @@
     background-color: #2b2d31;
     color: #ddd;
   }
-  </style>
+  </style> -->
   

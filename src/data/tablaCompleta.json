@@ -1,0 +1,74 @@
+{
+    "standings": [
+        {
+            "position": 1,
+            "team": {
+                "name": "Atlético de Madrid",
+                "logo": "https://img.planetafobal.com/2016/12/atletico-de-madrid-escudo-nuevo-2017-g.jpg",
+                "url": "/teams/atletico-de-madrid"
+            },
+            "played": 19,
+            "won": 13,
+            "drawn": 5,
+            "lost": 1,
+            "goalDifference": 22,
+            "points": 44
+        },
+        {
+            "position": 2,
+            "team": {
+                "name": "Real Madrid",
+                "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png",
+                "url": "/teams/real-madrid"
+            },
+            "played": 19,
+            "won": 13,
+            "drawn": 4,
+            "lost": 2,
+            "goalDifference": 20,
+            "points": 43
+        },
+        {
+            "position": 3,
+            "team": {
+                "name": "Real Madrid",
+                "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png",
+                "url": "/teams/real-madrid"
+            },
+            "played": 19,
+            "won": 13,
+            "drawn": 4,
+            "lost": 2,
+            "goalDifference": 20,
+            "points": 43
+        },
+        {
+            "position": 4,
+            "team": {
+                "name": "Real Madrid",
+                "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png",
+                "url": "/teams/real-madrid"
+            },
+            "played": 19,
+            "won": 13,
+            "drawn": 4,
+            "lost": 2,
+            "goalDifference": 20,
+            "points": 43
+        },
+        {
+            "position": 5,
+            "team": {
+                "name": "Real Madrid",
+                "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/800px-Real_Madrid_CF.svg.png",
+                "url": "/teams/real-madrid"
+            },
+            "played": 19,
+            "won": 13,
+            "drawn": 4,
+            "lost": 2,
+            "goalDifference": 20,
+            "points": 43
+        }
+    ]
+}

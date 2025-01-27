@@ -3,6 +3,8 @@ import App from './App.vue';
 import router from './router';
 import axios from './pluggins/axios'; // Asegúrate de que la ruta sea correcta
 import '@fortawesome/fontawesome-free/css/all.css';
+import "tailwindcss/tailwind.css"
+import './assets/main.css';
 
 const app = createApp(App);
 
