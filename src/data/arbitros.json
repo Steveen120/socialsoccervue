@@ -1,0 +1,69 @@
+{
+    "arbitros": [
+        {
+            "foto":	"/prueba.jpg",
+            "nombre": "HAMTI Edorján",
+            "ciudad" : "Bogotá",
+            "funcion" : "Árbitro",
+            "pitajes" : "10",
+            "genero" : "Masculino",
+            "city" : "Quito",
+            "tarjetas" : {
+                "amarillas" : "5",
+                "rojas" : "1"
+            }
+        },
+        {
+            "foto":	"/prueba.jpg",
+            "nombre": "GONZÁLEZ María",
+            "ciudad" : "Bogotá",
+            "funcion" : "Árbitro",
+            "pitajes" : "10",
+            "genero" : "Femenino",
+            "city" : "Quito",
+            "tarjetas" : {
+                "amarillas" : "5",
+                "rojas" : "1"
+            }
+        },
+        {
+            "foto":	"/prueba.jpg",
+            "nombre": "MARTÍNEZ Juan",
+            "ciudad" : "Bogotá",
+            "funcion" : "Árbitro",
+            "pitajes" : "10",
+            "genero" : "Masculino",
+            "city" : "Quito",
+            "tarjetas" : {
+                "amarillas" : "5",
+                "rojas" : "1"
+            }
+        },
+        {
+            "foto":	"/prueba.jpg",
+            "nombre": "GÓMEZ María",
+            "ciudad" : "Bogotá",
+            "funcion" : "Árbitro",
+            "pitajes" : "10",
+            "genero" : "Femenino",
+            "city" : "Quito",
+            "tarjetas" : {
+                "amarillas" : "5",
+                "rojas" : "1"
+            }
+        },
+        {
+            "foto":	"/prueba.jpg",
+            "nombre": "RODRÍGUEZ Juan",
+            "ciudad" : "Bogotá",
+            "funcion" : "Árbitro",
+            "pitajes" : "10",
+            "genero" : "Masculino",
+            "city" : "Quito",
+            "tarjetas" : {
+                "amarillas" : "5",
+                "rojas" : "1"
+            }
+        }
+    ]
+}

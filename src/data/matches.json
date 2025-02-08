@@ -1,0 +1,136 @@
+{
+    "matches": [
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "FC Barcelona",
+          "logo": "/assets/perfil/FC Barcelona.png",
+          "score": 5
+        },
+        "team2": {
+          "name": "Real Betis",
+          "logo": "/assets/perfil/Real Betis.png",
+          "score": 1
+        },
+        "date": "25/01/2025"
+      },
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "Real Madrid",
+          "logo": "/assets/perfil/Real Madrid.png",
+          "score": 3
+        },
+        "team2": {
+          "name": "Atletico Madrid",
+          "logo": "/assets/perfil/Atletico Madrid.png",
+          "score": 2
+        },
+        "date": "26/01/2025"
+      },
+
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "FC Barcelona",
+          "logo": "/assets/perfil/FC Barcelona.png",
+          "score": 5
+        },
+        "team2": {
+          "name": "Real Betis",
+          "logo": "/assets/perfil/Real Betis.png",
+          "score": 1
+        },
+        "date": "25/01/2025"
+      },
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "Real Madrid",
+          "logo": "/assets/perfil/Real Madrid.png",
+          "score": 3
+        },
+        "team2": {
+          "name": "Atletico Madrid",
+          "logo": "/assets/perfil/Atletico Madrid.png",
+          "score": 2
+        },
+        "date": "26/01/2025"
+      },
+
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "FC Barcelona",
+          "logo": "/assets/perfil/FC Barcelona.png",
+          "score": 5
+        },
+        "team2": {
+          "name": "Real Betis",
+          "logo": "/assets/perfil/Real Betis.png",
+          "score": 1
+        },
+        "date": "25/01/2025"
+      },
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "Real Madrid",
+          "logo": "/assets/perfil/Real Madrid.png",
+          "score": 3
+        },
+        "team2": {
+          "name": "Atletico Madrid",
+          "logo": "/assets/perfil/Atletico Madrid.png",
+          "score": 2
+        },
+        "date": "26/01/2025"
+      },
+
+      {
+        "month": "Diciembre",
+        "year": 2024,
+        "league": "LaLiga",
+        "team1": {
+          "name": "FC Barcelona",
+          "logo": "/assets/perfil/FC Barcelona.png",
+          "score": 5
+        },
+        "team2": {
+          "name": "Real Betis",
+          "logo": "/assets/perfil/Real Betis.png",
+          "score": 1
+        },
+        "date": "25/01/2025"
+      },
+      {
+        "month": "Enero",
+        "year": 2025,
+        "league": "LaLiga",
+        "team1": {
+          "name": "Real Madrid",
+          "logo": "/assets/perfil/Real Madrid.png",
+          "score": 3
+        },
+        "team2": {
+          "name": "Atletico Madrid",
+          "logo": "/assets/perfil/Atletico Madrid.png",
+          "score": 2
+        },
+        "date": "26/01/2025"
+      }
+      
+    ]
+  }
