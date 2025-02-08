@@ -603,6 +603,9 @@ input {
   border: 1px solid #ddd;
   border-radius: 8px;
   text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
 }
 
 h1 {

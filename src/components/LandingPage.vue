@@ -1,5 +1,6 @@
 <template>
   <div class="landing-page">
+<<<<<<< HEAD
     <!-- Encabezado -->
     <span class="text-xl md:text-4xl">Bienvenido a la {{ division }}</span>
     <p>Seleccione una opción del menú para comenzar.</p>
@@ -129,6 +130,23 @@ const newsItems = computed(() => {
     })),
   ];
 });
+=======
+    <h2>Bienvenido a la {{ division }}</h2>
+    <p>Seleccione una opción del menú para comenzar.</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'LandingPage',
+  props: {
+    division: {
+      type: String,
+      required: true
+    }
+  }
+};
+>>>>>>> 9af5ccbb15b8e49c9f61dadba18a788d2ed936d1
 </script>
 
 <style scoped>
@@ -145,6 +163,7 @@ const newsItems = computed(() => {
 .landing-page p {
   font-size: 1.25rem;
 }
+<<<<<<< HEAD
 
 /* Estilos para la sección de partidos en vivo */
 .live-matches-section {
@@ -167,4 +186,6 @@ const newsItems = computed(() => {
   margin-top: 2rem;
   font-style: italic;
 }
+=======
+>>>>>>> 9af5ccbb15b8e49c9f61dadba18a788d2ed936d1
 </style>
