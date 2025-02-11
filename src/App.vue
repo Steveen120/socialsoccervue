@@ -4,13 +4,13 @@
     <div class="flex justify-between p-4 bg-primary-color items-center gap-4 border border-b-2 border-primary-color">
       <div class="logo-container flex gap-4">
         <div class="w-9 h-10">
-          <router-link to="/" exact-active-class="active" class="flex items-center gap-2">
+          <router-link to="/inicio" exact-active-class="active" class="flex items-center gap-2">
             <img src="./assets/images/logo.svg" alt="Logo" class="object-cover" />
           </router-link>
         </div>
         <span class="text-white">SOCIAL SOCCER</span>
       </div>
-
+ 
       <div class="flex items-center gap-4">
         <!-- Selector de rol -->
         <div v-if="isLoggedIn">
@@ -62,7 +62,7 @@
               { 'items-center p-8': isMenuCollapsed, 'items-start p-8': !isMenuCollapsed }
             ]">
               <li>
-                <router-link to="/" exact-active-class="active" class="flex items-center gap-2">
+                <router-link to="/inicio" exact-active-class="active" class="flex items-center gap-2">
                   <font-awesome-icon icon="home" />
                   <span v-if="!isMenuCollapsed" class="dark:text-white">Inicio</span>
                 </router-link>
@@ -90,10 +90,10 @@
               <div class="toggle-wrapper flex items-center gap-2 p-4">
                 <div class="toggle">
                   <input id="dark-mode-toggle" type="checkbox" v-model="isDarkMode" class="hidden" />
-                  <label for="dark-mode-toggle"
+                    <label for="dark-mode-toggle"
                     class="w-12 h-6 bg-gray-400 dark:bg-gray-600 rounded-full relative cursor-pointer">
                     <span
-                      class="block w-6 h-6 bg-primary-color dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
+                      class="block w-6 h-6 bg-black dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
                       :class="{ 'translate-x-6': isDarkMode }"></span>
                   </label>
                 </div>
