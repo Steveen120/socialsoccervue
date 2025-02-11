@@ -1,0 +1,443 @@
+[
+    [
+        {
+            "id": "1",
+            "type": "match",
+            "team1": {
+                "name": "FC Barcelona",
+                "logo": "/assets/perfil/FC Barcelona.png"
+            },
+            "team2": {
+                "name": "Real Madrid",
+                "logo": "/assets/perfil/Real Madrid.png"
+            },
+            "date": "2025-01-25",
+            "result": "victoria",
+            "league": "Primera División",
+            "status": "En Vivo",
+            "score": "2 - 1",
+            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "stats": [
+                {
+                    "label": "Posesión",
+                    "value": "55% - 45%"
+                },
+                {
+                    "label": "Tiros",
+                    "value": "12 - 8"
+                },
+                {
+                    "label": "Faltas",
+                    "value": "10 - 15"
+                }
+            ],
+            "news": [
+                {
+                    "title": "Jugador clave anota gol decisivo"
+                },
+                {
+                    "title": "Entrenador hace cambio táctico"
+                }
+            ],
+            "lineups": {
+                "team1": {
+                    "formation": "4-3-3",
+                    "players": [
+                        {
+                            "name": "Marc-André ter Stegen",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Jordi Alba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ronald Araújo",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Gerard Piqué",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Sergiño Dest",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Pedri",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Frenkie de Jong",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Gavi",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Ansu Fati",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Memphis Depay",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Ousmane Dembélé",
+                            "position": "Delantero"
+                        }
+                    ]
+                },
+                "team2": {
+                    "formation": "4-4-2",
+                    "players": [
+                        {
+                            "name": "Thibaut Courtois",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Dani Carvajal",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Éder Militão",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "David Alaba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ferland Mendy",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Luka Modric",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Toni Kroos",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Casemiro",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Vinícius Jr.",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Karim Benzema",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Rodrygo",
+                            "position": "Delantero"
+                        }
+                    ]
+                }
+            },
+            "time": "20'"
+        },
+        {
+            "id": "2",
+            "type": "match",
+            "team1": {
+                "name": "FC Barcelona",
+                "logo": "/assets/perfil/FC Barcelona.png"
+            },
+            "team2": {
+                "name": "Real Madrid",
+                "logo": "/assets/perfil/Real Madrid.png"
+            },
+            "date": "2025-01-25",
+            "result": "victoria",
+            "league": "Primera División",
+            "status": "En Vivo",
+            "score": "2 - 1",
+            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "stats": [
+                {
+                    "label": "Posesión",
+                    "value": "55% - 45%"
+                },
+                {
+                    "label": "Tiros",
+                    "value": "12 - 8"
+                },
+                {
+                    "label": "Faltas",
+                    "value": "10 - 15"
+                }
+            ],
+            "news": [
+                {
+                    "title": "Jugador clave anota gol decisivo"
+                },
+                {
+                    "title": "Entrenador hace cambio táctico"
+                }
+            ],
+            "lineups": {
+                "team1": {
+                    "formation": "4-3-3",
+                    "players": [
+                        {
+                            "name": "Marc-André ter Stegen",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Jordi Alba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ronald Araújo",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Gerard Piqué",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Sergiño Dest",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Pedri",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Frenkie de Jong",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Gavi",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Ansu Fati",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Memphis Depay",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Ousmane Dembélé",
+                            "position": "Delantero"
+                        }
+                    ]
+                },
+                "team2": {
+                    "formation": "4-4-2",
+                    "players": [
+                        {
+                            "name": "Thibaut Courtois",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Dani Carvajal",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Éder Militão",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "David Alaba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ferland Mendy",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Luka Modric",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Toni Kroos",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Casemiro",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Vinícius Jr.",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Karim Benzema",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Rodrygo",
+                            "position": "Delantero"
+                        }
+                    ]
+                }
+            },
+            "time": "20'"
+        },
+        {
+            "id": "3",
+            "type": "match",
+            "team1": {
+                "name": "FC Barcelona",
+                "logo": "/assets/perfil/FC Barcelona.png"
+            },
+            "team2": {
+                "name": "Real Madrid",
+                "logo": "/assets/perfil/Real Madrid.png"
+            },
+            "date": "2025-01-25",
+            "result": "victoria",
+            "league": "Primera División",
+            "status": "En Vivo",
+            "score": "2 - 1",
+            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "stats": [
+                {
+                    "label": "Posesión",
+                    "value": "55% - 45%"
+                },
+                {
+                    "label": "Tiros",
+                    "value": "12 - 8"
+                },
+                {
+                    "label": "Faltas",
+                    "value": "10 - 15"
+                }
+            ],
+            "news": [
+                {
+                    "title": "Jugador clave anota gol decisivo"
+                },
+                {
+                    "title": "Entrenador hace cambio táctico"
+                }
+            ],
+            "lineups": {
+                "team1": {
+                    "formation": "4-3-3",
+                    "players": [
+                        {
+                            "name": "Marc-André ter Stegen",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Jordi Alba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ronald Araújo",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Gerard Piqué",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Sergiño Dest",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Pedri",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Frenkie de Jong",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Gavi",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Ansu Fati",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Memphis Depay",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Ousmane Dembélé",
+                            "position": "Delantero"
+                        }
+                    ]
+                },
+                "team2": {
+                    "formation": "4-4-2",
+                    "players": [
+                        {
+                            "name": "Thibaut Courtois",
+                            "position": "Portero"
+                        },
+                        {
+                            "name": "Dani Carvajal",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Éder Militão",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "David Alaba",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Ferland Mendy",
+                            "position": "Defensa"
+                        },
+                        {
+                            "name": "Luka Modric",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Toni Kroos",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Casemiro",
+                            "position": "Mediocampista"
+                        },
+                        {
+                            "name": "Vinícius Jr.",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Karim Benzema",
+                            "position": "Delantero"
+                        },
+                        {
+                            "name": "Rodrygo",
+                            "position": "Delantero"
+                        }
+                    ]
+                }
+            },
+            "time": "20'"
+        },
+        {
+            "id": "4",
+            "type": "news", 
+            "title": "Nueva estrategia defensiva implementada",
+            "description": "El entrenador del FC Barcelona ha introducido una nueva estrategia defensiva que está dando resultados sorprendentes.",
+            "image": "/public/assets/menu/resultado.jpg",
+            "date": "2025-01-24"
+        },
+        {
+            "id": "5",
+            "type": "news", 
+            "title": "Lesión de Karim Benzema preocupa al Real Madrid",
+            "description": "El delantero estrella del Real Madrid sufrió una lesión durante el entrenamiento y podría perderse los próximos partidos.",
+            "image": "/public/assets/menu/resultado.jpg",
+            "date": "2025-01-23"
+        }
+    ]
+]

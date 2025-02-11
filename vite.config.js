@@ -11,12 +11,16 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: [
-      { find: '@', replacement: resolve(__dirname, './src') }
+      { find: '@', replacement: resolve(__dirname, './src'), 'path': 'path-browserify' }
     ],
   },
   server: {
     host: '0.0.0.0', // Permite acceso en Railway
-    port: process.env.PORT || 5173, // Puerto dinámico en Railway
+    port: process.env.PORT || 5175, // Puerto dinámico en Railway
     strictPort: true,
   },
+  optimizeDeps: {
+    exclude: ['path']
+  },
+
 });
