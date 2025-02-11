@@ -168,12 +168,24 @@ export default {
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+.player-photo-card:hover {
+  transform: scale(1.05);
 }
 .player-card {
   transition: transform 0.3s ease-in-out;
+  width: 100%;
 }
 .player-card:hover {
   transform: translateY(-10px);
+}
+
+.player-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .info-box{
