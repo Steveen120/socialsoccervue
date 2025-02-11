@@ -59,6 +59,11 @@
 import { ref } from 'vue';
 import CategoriasMenu from './Menu/CategoriasMenu.vue';
 import UsuarioMenu from './Menu/UsuarioMenu.vue';
+import CategoriasMenu from './Menu/CategoriasMenu.vue';
+import UsuarioMenu from './Menu/UsuarioMenu.vue';
+import CategoriasMenu from './CategoriasMenu.vue';
+import UsuarioMenu from './UsuarioMenu.vue';
+
 
 // Controla si el menú hamburguesa está abierto
 const isMenuOpen = ref(false);
