@@ -12,21 +12,16 @@
       </div>
 
       <div class="flex items-center gap-4">
-        <!-- Selector de rol -->
-        <div v-if="isLoggedIn">
-          <CustomSelect v-if="!isMobile" v-model="selectedRole" :options="roleOptions" />
-          <MobileSelectMenu v-if="isMobile" v-model="selectedRole" :options="roleOptions" />
-        </div>
-
         <!-- Botón hamburguesa (visible en móviles) -->
         <button @click="toggleSidebar"
           class="md:hidden p-2 rounded-md dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-color dark:focus:ring-primary-color-dark transition-transform duration-300 flex">
           <font-awesome-icon :icon="isSidebarVisible ? 'times' : 'bars'" class="h-6 text-white" />
         </button>
 
-        <!-- Menú de usuario -->
-        <div  class="relative flex justify-center px-4">
+        <!-- Menú de usuario con mensaje de bienvenida -->
+        <div class="relative flex justify-center px-4">
           <div @click="toggleUserMenu" class="relative flex items-center gap-2 cursor-pointer">
+            <span class="text-white font-bold text-lg mr-2">Bienvenido, Steveen</span> <!-- Mensaje agregado antes del icono -->
             <font-awesome-icon icon="user" class="h-8 text-white" />
           </div>
           <transition name="slide-fade">
@@ -40,8 +35,8 @@
     <!-- Contenedor principal -->
     <div :class="{ 'dark': isDarkMode }" class="flex h-[93%] 2xl:h-full overflow-hidden">
       <!-- Sidebar -->
-      <div v-if="isSidebarVisible || !isMobile && shouldShowSidebar" :class="[
-        'sidebar',
+      <div v-if="isSidebarVisible || (!isMobile && shouldShowSidebar)" :class="[ 
+        'sidebar', 
         { 'w-20': isMenuCollapsed, 'w-64': !isMenuCollapsed },
         'bg-white h-full dark:bg-bg-dark dark:text-white flex-shrink-0 transition-width duration-300 pt-4',
         { 'hidden md:block': !isSidebarVisible && isMobile }
@@ -83,6 +78,13 @@
               <Transition name="fade-slide">
                 <AdministracionMenu v-if="showAdministracion && !isMenuCollapsed" class="pl-8" />
               </Transition>
+              <!-- Botón de Cerrar Sesión con estilo único -->
+              <li v-if="isLoggedIn">
+                <button @click="handleLogout" class="flex items-center gap-2 mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
+                  <font-awesome-icon icon="sign-out-alt" />
+                  <span v-if="!isMenuCollapsed" class="cursor-pointer">Cerrar Sesión</span>
+                </button>
+              </li>
             </ul>
 
             <!-- Botón de modo oscuro -->
@@ -112,16 +114,13 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
-import CustomSelect from "./components/Menu/CustomSelectMenu.vue";
-import MobileSelectMenu from "./components/Menu/MobileSelectMenu.vue";
 import CategoriasMenu from "./components/Menu/CategoriasMenu.vue";
 import UsuarioMenu from "./components/Menu/UsuarioMenu.vue";
 import AdministracionMenu from "./components/Menu/AdministracionMenu.vue";
 
 const isLoggedIn = ref(!!localStorage.getItem('token'));
-
 const showCategoriasMenu = ref(false);
 const showUsuarioMenu = ref(false);
 const showAdministracion = ref(false);
@@ -131,20 +130,6 @@ const isSidebarVisible = ref(false);
 
 const router = useRouter();
 const isMobile = ref(window.innerWidth < 768);
-const selectedRole = ref("cliente");
-
-const roleOptions = [
-  { value: "cliente", label: "Cliente" },
-  { value: "administrador", label: "Administrador" }
-];
-
-watch(selectedRole, (newRole) => {
-  if (newRole === "administrador") {
-    router.push("/administracion");
-  } else if (newRole === "cliente") {
-    router.push("/");
-  }
-});
 
 const updateIsMobile = () => {
   isMobile.value = window.innerWidth < 768;
@@ -179,7 +164,7 @@ const handleLogout = () => {
 };
 
 const shouldShowSidebar = computed(() => {
-  return selectedRole.value === "cliente" && (isSidebarVisible.value || !isMobile.value);
+  return isSidebarVisible.value || !isMobile.value;
 });
 
 onMounted(() => {
@@ -192,31 +177,15 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Transiciones */
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.3s ease;
-}
-
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateX(-10px);
-}
-
-/* Efecto de rotación para el ícono del botón hamburguesa */
-button[aria-expanded="true"] .fa-bars {
-  transform: rotate(90deg);
+.sidebar-drawer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
 }
 </style>

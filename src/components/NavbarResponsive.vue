@@ -12,7 +12,7 @@
             </svg>
         </button>
 
-        <!-- Menú desplegable -->
+        <!-- Menú desplegable -->x
         <div v-if="isMenuOpen"
             class="absolute top-16 left-0 w-full bg-white dark:bg-gray-800 shadow-lg z-50 transform transition-transform duration-500"
             :class="{ 'translate-x-0': isMenuOpen, '-translate-x-full': !isMenuOpen }">
