@@ -3,29 +3,29 @@
     <!-- Contenedor principal del marcador -->
     <div class="marcador bg-gradient-to-r from-gray-700 to-gray-900 pt-4 rounded-xl shadow-xl dark:bg-gray-800">
       <!-- Sección del marcador -->
-      <div class="scoreboard flex justify-around pb-6 animate__animated animate__fadeIn">
+      <div class="scoreboard flex flex-wrap justify-around pb-6 animate__animated animate__fadeIn">
         <!-- Información del equipo local -->
-        <div class="team animate__animated animate__fadeInLeft">
+        <div class="team animate__animated animate__fadeInLeft flex flex-col items-center">
           <img :src="details.team1.logo" alt="FC Barcelona" class="team-logo">
-          <div class="team-name text-2xl font-semibold text-white dark:text-gray-100">{{ details.team1.name }}</div>
-          <div class="team-info text-sm text-gray-300 mt-2 dark:text-gray-400">
+          <div class="team-name">{{ details.team1.name }}</div>
+          <div class="team-info">
             <p>Entrenador: {{ details.team1.coach }}</p>
             <p>Ciudad: {{ details.team1.city }}</p>
           </div>
         </div>
 
         <!-- Marcador del partido -->
-        <div class="score text-9xl flex items-center gap-10 animate__animated animate__zoomIn">
+        <div class="score flex items-center gap-10 animate__animated animate__zoomIn">
           <span class="bg-blue-600 text-white p-6 px-12 rounded-lg">{{ details.team1.score }}</span>
           <span class="score-separator text-5xl text-white">:</span>
           <span class="bg-green-600 text-white p-6 px-12 rounded-lg">{{ details.team2.score }}</span>
         </div>
 
         <!-- Información del equipo visitante -->
-        <div class="team animate__animated animate__fadeInRight">
-          <div class="team-name text-2xl font-semibold text-white dark:text-gray-100">{{ details.team2.name }}</div>
+        <div class="team animate__animated animate__fadeInRight flex flex-col items-center">
           <img :src="details.team2.logo" alt="Real Betis" class="team-logo">
-          <div class="team-info text-sm text-gray-300 mt-2 dark:text-gray-400">
+          <div class="team-name">{{ details.team2.name }}</div>
+          <div class="team-info">
             <p>Entrenador: {{ details.team2.coach }}</p>
             <p>Ciudad: {{ details.team2.city }}</p>
           </div>
@@ -118,15 +118,19 @@ export default {
   display: flex;
   justify-content: space-around;
   padding-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .team {
   text-align: center;
+  flex: 1;
+  margin: 1rem;
 }
 
 .team-logo {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
   object-fit: cover;
   border-radius: 50%;
   transition: transform 0.3s ease;
@@ -144,19 +148,25 @@ export default {
   font-weight: 500;
   color: #ffffff;
   margin-top: 1rem;
-  font-size: 1.5rem; /* Tamaño predeterminado */
+  font-size: 2rem; /* Tamaño predeterminado */
 }
 
 /* Media queries para pantallas pequeñas */
+@media (max-width: 1024px) {
+  .team-name {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .team-name {
-    font-size: 1.2rem; /* Reducir tamaño de fuente en pantallas medianas */
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
   .team-name {
-    font-size: 1rem; /* Reducir tamaño de fuente aún más en pantallas pequeñas */
+    font-size: 1rem;
   }
 }
 
@@ -190,11 +200,6 @@ export default {
   text-align: center;
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.tabla-goles:hover {
-  transform: scale(1.02);
 }
 
 .tabla-goles th,
@@ -218,26 +223,6 @@ export default {
 
 .arbitro span {
   color: #cbd5e0;
-}
-
-.tabla-goles tbody tr {
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.tabla-goles tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
-}
-
-@keyframes bounceIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 
 /* Animaciones */
