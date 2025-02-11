@@ -17,10 +17,10 @@ import Administracion from '@/sections/Administracion.vue';
 import LiveMatchView from '@/sections/shared/LiveMatchView.vue';
 
 const routes = [
-  { path: '/', name: 'Inicio', component: Inicio, meta: { requiresAuth: true } },
+  { path: '/inicio', name: 'Inicio', component: Inicio, meta: { requiresAuth: true } },
   { path: '/administracion', name: 'Administracion', component: Administracion },
-  { path: '/perfil', name: 'Perfil', component: Perfil },
-  { path: '/login', name: 'login', component: Login },
+  { path: '/perfil', name: 'Perfil', component: Perfil, },
+  { path: '/', name: 'login', component: Login },
   { path: '/registrar', name: 'Regiter', component: Register},
 
   // Primera División
