@@ -80,6 +80,20 @@
             </ul>
           </div>
         </nav>
+         <!-- Botón de modo oscuro -->
+         <div class="flex justify-center">
+              <div class="toggle-wrapper flex items-center gap-2 p-4">
+                <div class="toggle">
+                  <input id="dark-mode-toggle" type="checkbox" v-model="isDarkMode" class="hidden" />
+                    <label for="dark-mode-toggle"
+                    class="w-12 h-6 bg-gray-400 dark:bg-gray-600 rounded-full relative cursor-pointer">
+                    <span
+                      class="block w-6 h-6 bg-black dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
+                      :class="{ 'translate-x-6': isDarkMode }"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
       </div>
 
       <!-- Contenido principal -->
@@ -137,8 +151,7 @@ const toggleAdministracion = () => {
 
 const handleLogout = () => {
   localStorage.removeItem('token');
-  isLoggedIn.value = false;
-  router.push('/login');
+  router.push('/');
 };
 
 const shouldShowSidebar = computed(() => {

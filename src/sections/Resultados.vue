@@ -13,11 +13,6 @@
         </div>
         <div class="flex flex-col md:flex-row gap-4 md:gap-8">
           <span class="text-xl">Resultados de los últimos partidos</span>
-          <select class="dark:bg-bg-cards-dark text-black dark:text-white rounded-lg" name="team" id="team">
-            <option selected disabled>Seleccione un tipo</option>
-            <option>FC Barcelona</option>
-            <option>Real Betis</option>
-          </select>
         </div>
       </div>
       <!-- Itera sobre los grupos de partidos agrupados por mes y año -->

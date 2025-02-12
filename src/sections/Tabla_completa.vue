@@ -1,9 +1,7 @@
 <template>
   <div class="background overflow-auto">
     <!-- Botón para volver a la tabla de posiciones -->
-    <button v-if="!showTable" @click="goBack" class="p-3 font-bold text-primary-color dark:text-white bg-bg-cards dark:bg-bg-cards-dark rounded-lg cursor-pointer">
-      < Atrás
-    </button>
+    
     <!-- Componente de la tabla de posiciones -->
     <Tabla v-if="showTable" :headers="headers" :data="standings" @row-click="handleRowClick" tableType="equipos" />
     <!-- Componente de detalles del equipo seleccionado -->

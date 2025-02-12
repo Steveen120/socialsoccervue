@@ -3,7 +3,7 @@
     <header class="header flex-col md:flex-row gap-4 md:gap-0 md:justify-evenly justify-center text-black dark:text-white bg-bg-cards dark:bg-bg-cards-dark">
       <img :src="`./assets/perfil/${nombre}.png`" alt="FC Barcelona" class="logo" />
       <h1>{{ nombre }}</h1>
-      <button class="btn-ver-jugadores p-4">Ver jugadores</button>
+      <button class="btn-ver-jugadores p-4">Ver jugdddddores</button>
     </header>
 
     <!-- <nav class="navigation">

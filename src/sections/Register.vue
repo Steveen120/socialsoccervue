@@ -3,9 +3,10 @@
     <div class="flex flex-col md:flex-row w-full max-w-5xl bg-white rounded-xl mx-auto shadow-lg overflow-hidden" id="contenedor">
 
       <!-- Sección Izquierda (Formulario) -->
-      <div class="w-full md:w-1/2 p-4 sm:p-8 lg:p-14">
-        <h1 class="text-black text-3xl mb-3 text-center">SOCIAL SOCCER</h1>
-        <p class="mb-4 text-black text-center" id="descripcion">Únete a Social Soccer y vive la pasión del fútbol</p>
+      <div class=" w-full md:w-1/2 p-4 sm:p-8 lg:p-14 text-[#00ffc1] space-y-6 relative bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/src/assets/images/fondo.webp');">
+        <h1 class=" text-3xl mb-3 text-center">SOCIAL SOCCER</h1>
+        <p class="mb-4 text-center" id="descripcion">Únete a Social Soccer y vive la pasión del fútbol</p>
 
         <form @submit.prevent="handleSubmit">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -129,16 +130,14 @@ const handleSubmit = () => {
 /* Estilos generales */
 h1 {
   text-align: center;
+  
 }
 
 #contenedor{
   margin-top: 5em;
 }
 
-/* Color de la descripción */
-#descripcion {
-  color: rgb(48, 47, 47);
-}
+
 
 /* Estilos del botón */
 #boton-registro {

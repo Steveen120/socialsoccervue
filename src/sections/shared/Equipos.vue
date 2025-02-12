@@ -4,7 +4,7 @@
     <header class="header flex-col md:flex-row gap-4 md:gap-0 md:justify-evenly justify-center text-black dark:text-white bg-gradient-to-r from-[#2d3748] to-[#1a202c] shadow-lg animate__animated animate__fadeIn">
       <img src="@/assets/equipos/LDU.png" alt="FC Barcelona" class="logo transition-transform duration-300 hover:scale-105"/>
       <h1 class="text-3xl font-semibold text-white">{{ nombre }}</h1>
-      <button class="btn-ver-jugadores p-4 transition-all duration-300 hover:bg-[#4a5568] hover:text-white">Ver jugadores</button>
+     
     </header>
 
     <!-- Sección principal -->
