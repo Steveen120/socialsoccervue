@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'dark': isDarkMode }" class="h-screen">
-    <!-- Barra superior -->
-    <div class="flex justify-between p-4 bg-primary-color items-center gap-4 border border-b-2 border-primary-color">
+    <!-- Barra superior (Oculta en login y registro) -->
+    <div v-if="shouldShowNavbar" class="flex justify-between p-4 bg-primary-color items-center gap-4 border border-b-2 border-primary-color">
       <div class="logo-container flex gap-4">
         <div class="w-9 h-10">
           <router-link to="/inicio" exact-active-class="active" class="flex items-center gap-2">
@@ -12,16 +12,14 @@
       </div>
  
       <div class="flex items-center gap-4">
-        <!-- Botón hamburguesa (visible en móviles) -->
         <button @click="toggleSidebar"
           class="md:hidden p-2 rounded-md dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-color dark:focus:ring-primary-color-dark transition-transform duration-300 flex">
           <font-awesome-icon :icon="isSidebarVisible ? 'times' : 'bars'" class="h-6 text-white" />
         </button>
 
-        <!-- Menú de usuario con mensaje de bienvenida -->
         <div class="relative flex justify-center px-4">
           <div @click="toggleUserMenu" class="relative flex items-center gap-2 cursor-pointer">
-            <span class="text-white font-bold text-lg mr-2">Bienvenido, Steveen</span> <!-- Mensaje agregado antes del icono -->
+            <span class="text-white font-bold text-lg mr-2">Bienvenido, Steveen</span>
             <font-awesome-icon icon="user" class="h-8 text-white" />
           </div>
           <transition name="slide-fade">
@@ -33,14 +31,15 @@
     </div>
 
     <!-- Contenedor principal -->
-    <div :class="{ 'dark': isDarkMode }" class="flex h-[93%] 2xl:h-full overflow-hidden">
+    <div  :class="{ 'dark': isDarkMode }" class="flex h-[93%] 2xl:h-full overflow-hidden">
       <!-- Sidebar -->
-      <div v-if="isSidebarVisible || (!isMobile && shouldShowSidebar)" :class="[ 
-        'sidebar', 
-        { 'w-20': isMenuCollapsed, 'w-64': !isMenuCollapsed },
-        'bg-white h-full dark:bg-bg-dark dark:text-white flex-shrink-0 transition-width duration-300 pt-4',
-        { 'hidden md:block': !isSidebarVisible && isMobile }
-      ]">
+      <div  v-if="shouldShowNavbar && (isSidebarVisible || (!isMobile && shouldShowSidebar))" 
+        :class="[ 
+          'sidebar', 
+          { 'w-20': isMenuCollapsed, 'w-64': !isMenuCollapsed },
+          'bg-white h-full dark:bg-bg-dark dark:text-white flex-shrink-0 transition-width duration-300 pt-4',
+          { 'hidden md:block': !isSidebarVisible && isMobile }
+        ]">
         <nav>
           <div>
             <div class="flex justify-center">
@@ -49,13 +48,7 @@
                 <font-awesome-icon :icon="isMenuCollapsed ? 'chevron-right' : 'chevron-left'" />
               </button>
             </div>
-            <ul :class="[
-              'nav-links',
-              'flex',
-              'flex-col',
-              'gap-4',
-              { 'items-center p-8': isMenuCollapsed, 'items-start p-8': !isMenuCollapsed }
-            ]">
+            <ul :class="[ 'nav-links', 'flex', 'flex-col', 'gap-4', { 'items-center p-8': isMenuCollapsed, 'items-start p-8': !isMenuCollapsed } ]">
               <li>
                 <router-link to="/inicio" exact-active-class="active" class="flex items-center gap-2">
                   <font-awesome-icon icon="home" />
@@ -78,7 +71,6 @@
               <Transition name="fade-slide">
                 <AdministracionMenu v-if="showAdministracion && !isMenuCollapsed" class="pl-8" />
               </Transition>
-              <!-- Botón de Cerrar Sesión con estilo único -->
               <li v-if="isLoggedIn">
                 <button @click="handleLogout" class="flex items-center gap-2 mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors">
                   <font-awesome-icon icon="sign-out-alt" />
@@ -86,21 +78,6 @@
                 </button>
               </li>
             </ul>
-
-            <!-- Botón de modo oscuro -->
-            <div class="flex justify-center">
-              <div class="toggle-wrapper flex items-center gap-2 p-4">
-                <div class="toggle">
-                  <input id="dark-mode-toggle" type="checkbox" v-model="isDarkMode" class="hidden" />
-                    <label for="dark-mode-toggle"
-                    class="w-12 h-6 bg-gray-400 dark:bg-gray-600 rounded-full relative cursor-pointer">
-                    <span
-                      class="block w-6 h-6 bg-black dark:bg-white rounded-full shadow-md transform transition-transform duration-300"
-                      :class="{ 'translate-x-6': isDarkMode }"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
           </div>
         </nav>
       </div>
@@ -115,7 +92,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import CategoriasMenu from "./components/Menu/CategoriasMenu.vue";
 import UsuarioMenu from "./components/Menu/UsuarioMenu.vue";
 import AdministracionMenu from "./components/Menu/AdministracionMenu.vue";
@@ -129,6 +106,7 @@ const isMenuCollapsed = ref(true);
 const isSidebarVisible = ref(false);
 
 const router = useRouter();
+const route = useRoute(); // Obtener la ruta actual
 const isMobile = ref(window.innerWidth < 768);
 
 const updateIsMobile = () => {
@@ -167,6 +145,11 @@ const shouldShowSidebar = computed(() => {
   return isSidebarVisible.value || !isMobile.value;
 });
 
+// Ocultar la barra superior en la página de login
+const shouldShowNavbar = computed(() => {
+  return route.path !== '/' && route.path !== '/registrar'; // Oculta en login y registro
+});
+
 onMounted(() => {
   window.addEventListener("resize", updateIsMobile);
 });
@@ -175,17 +158,3 @@ onUnmounted(() => {
   window.removeEventListener("resize", updateIsMobile);
 });
 </script>
-
-<style scoped>
-.sidebar-drawer {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-}
-</style>

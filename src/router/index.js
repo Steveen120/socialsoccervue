@@ -15,7 +15,7 @@ import SegundaDivision from '@/sections/SegundaDivision.vue';
 import Register from '@/sections/Register.vue';
 import Administracion from '@/sections/Administracion.vue';
 import LiveMatchView from '@/sections/shared/LiveMatchView.vue';
-
+ 
 const routes = [
   { path: '/inicio', name: 'Inicio', component: Inicio, meta: { requiresAuth: true } },
   { path: '/administracion', name: 'Administracion', component: Administracion },
